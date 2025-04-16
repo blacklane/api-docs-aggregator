@@ -3,14 +3,8 @@ interface ApiItem {
   url: string;
 }
 
-// Define the type for the exported array
-export const apis: ApiItem[] = [
-  {
-    name: 'Athena',
-    url: 'https://api-docs.int.blacklane.io/athena.json'
-  },
-  {
-    name: 'Emirates',
-    url: 'https://api-docs.int.blacklane.io/emirates.json'
-  }
-]; 
+// Import APIs from the configuration file
+import apiConfig from '../../apis.config.json';
+
+// Export the APIs from the config file
+export const apis: ApiItem[] = apiConfig.apis; 
