@@ -1,0 +1,27 @@
+---
+import '../styles/global.css'; // Import global Tailwind styles
+import SwaggerAggregator from '../components/SwaggerAggregator';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Blacklane API Aggregator</title>
+		<script is:inline>
+			// On page load or when changing themes, best practice to avoid FOUC
+			if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
+	</head>
+	<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300">
+		<main>
+			<SwaggerAggregator client:only="react" />
+		</main>
+	</body>
+</html> 
