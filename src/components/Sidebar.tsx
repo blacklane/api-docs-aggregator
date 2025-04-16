@@ -64,7 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 										type="button"
 										ref={(el) => setItemRef(api.url, el)}
 										className={clsx(
-											"w-full text-left py-3 px-4 border-l-4 text-sm transition-all duration-300 ease-in-out focus:outline-none relative overflow-hidden group",
+											"w-full text-left py-3 px-4 border-l-4 text-sm transition-all duration-300 ease-in-out focus:outline-none relative overflow-hidden group cursor-pointer",
 											selectedApiUrl === api.url 
 												? "border-l-transparent bg-zinc-200 text-zinc-900 font-medium dark:bg-zinc-700 dark:text-zinc-100 translate-x-0.5"
 												: "border-l-transparent text-gray-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-750 dark:hover:text-zinc-900",

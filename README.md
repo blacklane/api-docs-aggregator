@@ -39,77 +39,40 @@ bun run dev
 
 The application will be available at `http://localhost:4321` by default.
 
-### CORS Proxy for Development
-
-The application includes a built-in CORS proxy for local development. When running in development mode, API specifications are automatically routed through this proxy to avoid cross-origin issues.
-
-If you're adding API specifications from different domains:
-
-1. Update the proxy configuration in `astro.config.mjs`:
-
-```typescript
-server: {
-  proxy: {
-    '/api-proxy': {
-      target: 'https://your-api-domain.com',
-      changeOrigin: true,
-      rewrite: (path) => path.replace(/^\/api-proxy/, ''),
-      secure: false
-    },
-    // Add additional proxies as needed
-    '/another-proxy': {
-      target: 'https://another-domain.com',
-      changeOrigin: true,
-      rewrite: (path) => path.replace(/^\/another-proxy/, ''),
-      secure: false
-    }
-  }
-}
-```
-
-2. Use the helper function in `src/config/apis.ts` to generate the correct URL:
-
-```typescript
-{
-  name: 'Another API',
-  url: import.meta.env.DEV 
-    ? '/another-proxy/swagger.json' 
-    : 'https://another-domain.com/swagger.json'
-}
-```
-
 ## Adding New API Specifications
 
 To add a new API specification to the aggregator:
 
-1. Open the file `src/config/apis.ts`
+1. Open the root-level file `apis.config.json`
 2. Add a new entry to the `apis` array following this format:
 
-```typescript
+```json
 {
-  name: 'API Name',  // The display name for the API
-  url: 'https://path/to/your/swagger.json'  // URL to the OpenAPI/Swagger JSON or YAML
+  "name": "API Name",  // The display name for the API
+  "url": "https://path/to/your/swagger.json"  // URL to the OpenAPI/Swagger JSON or YAML
 }
 ```
 
 Example:
 
-```typescript
-export const apis: ApiItem[] = [
-  {
-    name: 'Athena',
-    url: 'https://api-docs.int.blacklane.io/athena.json'
-  },
-  {
-    name: 'Emirates',
-    url: 'https://api-docs.int.blacklane.io/emirates.json'
-  },
-  // Add your new API here
-  {
-    name: 'New API',
-    url: 'https://example.com/api-docs.json'
-  }
-];
+```json
+{
+  "apis": [
+    {
+      "name": "Athena",
+      "url": "https://api-docs.int.blacklane.io/athena.json"
+    },
+    {
+      "name": "Emirates",
+      "url": "https://api-docs.int.blacklane.io/emirates.json"
+    },
+    // Add your new API here
+    {
+      "name": "New API",
+      "url": "https://example.com/api-docs.json"
+    }
+  ]
+}
 ```
 
 3. Save the file and restart the development server if needed
