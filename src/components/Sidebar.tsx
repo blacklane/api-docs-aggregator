@@ -2,6 +2,7 @@ import type React from "react";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import clsx from "clsx"; // Import clsx for conditional classes
 import { useRef, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 // Define the type for a single API item
 interface ApiItem {
@@ -12,19 +13,16 @@ interface ApiItem {
 // Define the props for the Sidebar component
 interface SidebarProps {
 	apis: ApiItem[];
-	onApiSelect: (url: string, name: string) => void;
 	selectedApiUrl: string | null;
 	currentTheme?: string; // Optional theme prop to force re-renders
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
 	apis,
-	onApiSelect,
 	selectedApiUrl,
-	currentTheme, // Add this prop
 }) => {
 	const [indicatorStyle, setIndicatorStyle] = useState({});
-	const itemRefs = useRef<Map<string, HTMLButtonElement | null>>(new Map());
+	const itemRefs = useRef<Map<string, HTMLAnchorElement | null>>(new Map());
 
 	useEffect(() => {
 		if (selectedApiUrl && itemRefs.current.has(selectedApiUrl)) {
@@ -42,14 +40,14 @@ const Sidebar: React.FC<SidebarProps> = ({
 	}, [selectedApiUrl]);
 
 	// Function to set ref
-	const setItemRef = (url: string, element: HTMLButtonElement | null) => {
+	const setItemRef = (url: string, element: HTMLAnchorElement | null) => {
 		if (element) {
 			itemRefs.current.set(url, element);
 		}
 	};
 
 	return (
-		<aside className="w-72 h-screen flex flex-col bg-white dark:bg-zinc-800 border-r border-gray-200 dark:border-zinc-700 overflow-hidden shrink-0" data-shade="925">
+		<aside className="w-50 h-screen flex flex-col bg-white dark:bg-zinc-800 border-r border-gray-200 dark:border-zinc-700 overflow-hidden shrink-0" data-shade="925">
 			<ScrollArea.Root className="flex-grow overflow-hidden">
 				<ScrollArea.Viewport className="w-full h-full">
 					{apis.length > 0 ? (
@@ -60,16 +58,15 @@ const Sidebar: React.FC<SidebarProps> = ({
 							/>
 							{apis.map((api) => (
 								<li key={api.url}>
-									<button
-										type="button"
-										ref={(el) => setItemRef(api.url, el)}
+									<Link
+										to={`/api/${api.name.toLowerCase()}`}
+										ref={(el: HTMLAnchorElement | null) => setItemRef(api.url, el)}
 										className={clsx(
-											"w-full text-left py-3 px-4 border-l-4 text-sm transition-all duration-300 ease-in-out focus:outline-none relative overflow-hidden group cursor-pointer",
+											"block w-full text-left py-3 px-4 border-l-4 text-sm transition-all duration-300 ease-in-out focus:outline-none relative overflow-hidden group cursor-pointer",
 											selectedApiUrl === api.url 
 												? "border-l-transparent bg-zinc-200 text-zinc-900 font-medium dark:bg-zinc-700 dark:text-zinc-100 translate-x-0.5"
 												: "border-l-transparent text-gray-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-750 dark:hover:text-zinc-900",
 										)}
-										onClick={() => onApiSelect(api.url, api.name)}
 									>
 										<span className={clsx(
 											"relative z-10 transition-transform duration-300",
@@ -80,7 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 										{selectedApiUrl === api.url && (
 											<span className="absolute inset-0 bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent transition-all duration-500 opacity-100" />
 										)}
-									</button>
+									</Link>
 								</li>
 							))}
 						</ul>

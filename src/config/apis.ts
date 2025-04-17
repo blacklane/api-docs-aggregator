@@ -1,4 +1,4 @@
-interface ApiItem {
+export interface ApiItem {
   name: string;
   url: string;
 }
