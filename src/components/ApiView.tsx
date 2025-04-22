@@ -5,6 +5,9 @@ import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 import { apis } from "@/config/apis";
 
+// API base URL from environment variable
+const API_BASE_URL = import.meta.env.PUBLIC_SWAGGER_API_URL;
+
 const ApiView: React.FC = () => {
 	const { apiName } = useParams<{ apiName: string }>();
 	const navigate = useNavigate();
@@ -31,7 +34,7 @@ const ApiView: React.FC = () => {
 
 	return (
 		<div className="absolute inset-0">
-			<SwaggerUI url={currentApi.url} />
+			<SwaggerUI url={`${API_BASE_URL}?url=${encodeURIComponent(currentApi.url)}`} />
 		</div>
 	);
 };

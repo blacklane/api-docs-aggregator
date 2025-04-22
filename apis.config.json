@@ -2,11 +2,15 @@
     "apis": [
         {
             "name": "Athena",
-            "url": "https://api-docs.int.blacklane.io/athena.json"
+            "url": "https://marco-swagger-ui-testing.s3.eu-central-1.amazonaws.com/athena/athena.json"
         },
         {
             "name": "Emirates",
-            "url": "https://api-docs.int.blacklane.io/emirates.json"
+            "url": "https://marco-swagger-ui-testing.s3.eu-central-1.amazonaws.com/emirates/emirates.json"
+        },
+        {
+            "name": "Geoservice",
+            "url": "https://raw.githubusercontent.com/blacklane/geoservice/refs/heads/main/docs/swagger.yaml"
         }
     ]
 }
