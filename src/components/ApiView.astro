@@ -1,7 +1,6 @@
 ---
-import SwaggerUI from 'swagger-ui-react';
-import "swagger-ui-react/swagger-ui.css";
 import { apis } from "../config/apis";
+import SwaggerUIComponent from "./SwaggerUIComponent";
 
 interface Props {
     apiName: string;
@@ -16,6 +15,9 @@ const API_BASE_URL = import.meta.env.PUBLIC_SWAGGER_API_URL || '';
 const currentApi = apis.find(
     (api) => api.name.toLowerCase() === (apiName?.toLowerCase() || "")
 );
+
+// Define a custom URL for the Swagger UI to use
+const swaggerUrl = currentApi?.url || '';
 ---
 {!currentApi ? (
     <div class="flex justify-center items-center h-full text-gray-500 dark:text-zinc-400 text-lg bg-gray-50 dark:bg-zinc-900">
@@ -23,7 +25,7 @@ const currentApi = apis.find(
     </div>
 ) : (
     <div class="absolute inset-0">
-        <SwaggerUI url={`${API_BASE_URL}?url=${encodeURIComponent(currentApi.url)}`} docExpansion="none" displayRequestDuration  deepLinking client:load />
+        <SwaggerUIComponent url={swaggerUrl} apiBaseUrl={API_BASE_URL} client:load />
     </div>
 )}
 
