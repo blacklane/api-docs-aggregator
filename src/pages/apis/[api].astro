@@ -1,0 +1,49 @@
+---
+import '../../styles/global.css';
+import Layout from '../../components/Layout.astro';
+import ApiViewAstro from '../../components/ApiView.astro';
+import { apis } from "../../config/apis";
+
+// Get the API name from the URL params
+const { api } = Astro.params;
+
+// Find the current API for the title and selected state
+const currentApi = apis.find(
+  (apiItem) => apiItem.name.toLowerCase() === (api?.toLowerCase() || "")
+);
+
+// Generate static paths for all APIs
+export function getStaticPaths() {
+  return apis.map(api => ({
+    params: { api: api.name.toLowerCase() }
+  }));
+}
+
+// If the API doesn't exist, redirect to the home page
+if (!currentApi && api) {
+  return Astro.redirect('/not-found');
+}
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{api ? `${api} API - Blacklane API Aggregator` : 'Blacklane API Aggregator'}</title>
+		<script is:inline>
+			// On page load or when changing themes, best practice to avoid FOUC
+			if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
+	</head>
+	<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300">
+		<Layout title={currentApi ? currentApi.name : "API Not Found"} selectedApiName={currentApi?.name || null}>
+			<ApiViewAstro apiName={api || ""} />
+		</Layout>
+	</body>
+</html> 

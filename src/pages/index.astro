@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'; // Import global Tailwind styles
-import SwaggerAggregator from '../components/SwaggerAggregator';
+import Layout from '../components/Layout.astro';
+import WelcomeAstro from '../components/WelcomeAstro.astro';
 ---
 
 <html lang="en">
@@ -20,8 +21,8 @@ import SwaggerAggregator from '../components/SwaggerAggregator';
 		</script>
 	</head>
 	<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300">
-		<main>
-			<SwaggerAggregator client:only="react" />
-		</main>
+		<Layout>
+			<WelcomeAstro />
+		</Layout>
 	</body>
 </html> 
