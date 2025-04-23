@@ -21,7 +21,7 @@ const { apis, selectedApiName } = Astro.props;
                             style="opacity: 0;"
                         />}
                         <a
-                            href={`/apis/${api.name.toLowerCase()}.html`}
+                            href={`/apis/${api.name.toLowerCase()}`}
                             data-url={api.name}
                             class={`block w-full text-left py-3 px-4 border-l-4 text-sm transition-all duration-300 ease-in-out focus:outline-none relative overflow-hidden group cursor-pointer
                                 ${selectedApiName === api.name 

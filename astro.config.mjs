@@ -4,9 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  trailingSlash: 'never',
   build: {
     // Set to false to avoid issues with S3 routing
-    format: 'file'
+    format: 'directory'
   },
   integrations: [react()],
   vite: {
