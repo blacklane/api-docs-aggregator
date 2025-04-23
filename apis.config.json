@@ -2,7 +2,7 @@
     "apis": [
         {
             "name": "Athena",
-            "url": "https://marco-swagger-ui-testing.s3.eu-central-1.amazonaws.com/athena/athena.json"
+            "url": "https://raw.githubusercontent.com/blacklane/api-docs/refs/heads/master/schemas/athena.yml"
         },
         {
             "name": "Emirates",

@@ -4,8 +4,7 @@ import "swagger-ui-react/swagger-ui.css";
 
 function SwaggerUIComponent({ url, apiBaseUrl }) {
   const requestInterceptor = (req) => {
-    console.log('Intercepting request:', req);
-    if (apiBaseUrl && !req.url.startsWith(apiBaseUrl)) {
+    if (apiBaseUrl && !req.url.startsWith(apiBaseUrl) && req.url.startsWith('https://raw.githubusercontent.com')) {
       return new Request(`${apiBaseUrl}?url=${encodeURIComponent(req.url)}`, req);
     }
     return req;
