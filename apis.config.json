@@ -6,11 +6,19 @@
         },
         {
             "name": "Emirates",
-            "url": "https://marco-swagger-ui-testing.s3.eu-central-1.amazonaws.com/emirates/emirates.json"
+            "url": "https://github.com/blacklane/api-docs/blob/master/schemas/emirates.yml"
         },
         {
             "name": "Geoservice",
-            "url": "https://raw.githubusercontent.com/blacklane/geoservice/refs/heads/main/docs/swagger.yaml"
+            "url": "https://github.com/blacklane/geoservice/blob/main/docs/swagger.yaml"
+        },
+        {
+            "name": "Bookings Service",
+            "url": "https://github.com/blacklane/bookings-service/blob/master/docs/openapi.yaml"
+        },
+        {
+            "name": "Reference Code Validator",
+            "url": "https://github.com/blacklane/reference-code-validator/blob/main/docs/swagger.yaml"
         }
     ]
 }
