@@ -1,6 +1,6 @@
-# Swagger Aggregator
+# API docs aggregator
 
-A simple web application that aggregates and displays multiple Swagger/OpenAPI specifications in a single interface.
+The Blacklane API docs aggregator
 
 ## Features
 
@@ -19,13 +19,15 @@ A simple web application that aggregates and displays multiple Swagger/OpenAPI s
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd swagger-aggregator
+git clone https://github.com/blacklane/api-docs-aggregator
+cd api-docs-aggregator
 
 # Install dependencies
 npm install
 # or if using bun
 bun install
+# Add the .env file
+cp .env.example .env
 ```
 
 ### Running the Application
@@ -49,7 +51,7 @@ To add a new API specification to the aggregator:
 ```json
 {
   "name": "API Name",  // The display name for the API
-  "url": "https://path/to/your/swagger.json"  // URL to the OpenAPI/Swagger JSON or YAML
+  "url": "https://github.com/blacklane/path/to/your/docs.yml"  // URL to the OpenAPI/Swagger JSON or YAML
 }
 ```
 
@@ -60,16 +62,16 @@ Example:
   "apis": [
     {
       "name": "Athena",
-      "url": "https://api-docs.int.blacklane.io/athena.json"
+      "url": "https://github.com/blacklane/api-docs/blob/master/schemas/athena.yml"
     },
     {
       "name": "Emirates",
-      "url": "https://api-docs.int.blacklane.io/emirates.json"
+      "url": "https://github.com/blacklane/api-docs/blob/master/schemas/emirates.yml"
     },
     // Add your new API here
     {
       "name": "New API",
-      "url": "https://example.com/api-docs.json"
+      "url": "https://github.com/blacklane/service/api-docs.json"
     }
   ]
 }

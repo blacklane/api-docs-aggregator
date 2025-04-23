@@ -1,7 +1,7 @@
 ---
 import '../../styles/global.css';
 import Layout from '../../components/Layout.astro';
-import ApiViewAstro from '../../components/ApiView.astro';
+import ApiView from '../../components/ApiView.astro';
 import { apis } from "../../config/apis";
 
 // Get the API name from the URL params
@@ -43,7 +43,7 @@ if (!currentApi && api) {
 	</head>
 	<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300">
 		<Layout title={currentApi ? currentApi.name : "API Not Found"} selectedApiName={currentApi?.name || null}>
-			<ApiViewAstro apiName={api || ""} />
+			<ApiView apiName={api || ""} />
 		</Layout>
 	</body>
 </html> 
