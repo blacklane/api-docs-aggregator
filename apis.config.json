@@ -2,7 +2,7 @@
     "apis": [
         {
             "name": "Athena",
-            "url": "https://raw.githubusercontent.com/blacklane/api-docs/refs/heads/master/schemas/athena.yml"
+            "url": "https://github.com/blacklane/api-docs/blob/master/schemas/athena.yml"
         },
         {
             "name": "Emirates",

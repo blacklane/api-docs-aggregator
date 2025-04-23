@@ -1,24 +1,33 @@
-import React from 'react';
-import SwaggerUI from 'swagger-ui-react';
+import React from "react";
+import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 
 function SwaggerUIComponent({ url, apiBaseUrl }) {
-  const requestInterceptor = (req) => {
-    if (apiBaseUrl && !req.url.startsWith(apiBaseUrl) && req.url.startsWith('https://raw.githubusercontent.com')) {
-      return new Request(`${apiBaseUrl}?url=${encodeURIComponent(req.url)}`, req);
-    }
-    return req;
-  };
+	const requestInterceptor = (req) => {
+		if (req.url.startsWith("https://github.com")) {
+			// Transform GitHub URLs to raw.githubusercontent.com
+			const rawUrl = req.url.replace(
+				/https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/(.+)/,
+				"https://raw.githubusercontent.com/$1/$2/$3/$4",
+			);
 
-  return (
-    <SwaggerUI
-      url={url}
-      docExpansion="none"
-      displayRequestDuration
-      deepLinking
-      requestInterceptor={requestInterceptor}
-    />
-  );
+			return new Request(
+				`${apiBaseUrl}?url=${encodeURIComponent(rawUrl)}`,
+				req,
+			);
+		}
+		return req;
+	};
+
+	return (
+		<SwaggerUI
+			url={url}
+			docExpansion="none"
+			displayRequestDuration
+			deepLinking
+			requestInterceptor={requestInterceptor}
+		/>
+	);
 }
 
-export default SwaggerUIComponent; 
+export default SwaggerUIComponent;
