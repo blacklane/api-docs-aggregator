@@ -1,0 +1,48 @@
+version: 2.1
+
+orbs: 
+  aws-s3: circleci/aws-s3@4.0
+  aws-cli: circleci/aws-cli@4
+  node: circleci/node@7
+
+workflows:
+  build_and_deploy:
+    jobs:
+      - build_pages:
+          context: infra-public-sdlc
+      # - build_and_deploy:
+      #     context: infra-public-sdlc
+      #     filters:
+      #       branches:
+      #         only: main
+
+jobs:
+  # build_and_deploy:
+  #   docker:
+  #     - image: cimg/python:3.9.19
+  #   steps:
+  #    - checkout
+  #    - aws-cli/setup:
+  #       role_arn: $CIRCLECI_OIDC_ROLE
+  #    - run: sudo /home/circleci/.pyenv/shims/pip install mkdocs mkdocs-material pygments pymdown-extensions mkdocs-minify-plugin mkdocs-glightbox 
+  #    - run: 
+  #       name: Build Docs site
+  #       command: mkdocs build --clean
+  #    - aws-s3/sync:
+  #       from: $HOME/project/site
+  #       to: 's3://handbook.int.blacklane.io'
+  #    - run: |
+  #         curl -i -X POST -H 'Content-Type: application/json' -H "X-jf-api-token: $JELLYFISH_TOKEN" -d '{"reference_id": "'$CIRCLE_BUILD_URL'", "is_successful": "true", "deployed_at": "'"$(date '+%F %T')"'", "name": "Deploying '$CIRCLE_PROJECT_REPONAME' ",  "repo_name": "'blacklane/$CIRCLE_PROJECT_REPONAME'", "commit_shas": ["'$CIRCLE_SHA1'"], "source_url": "'https://github.com/blacklane/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1'", "labels": ["team:devex", "app:handbook"] }' https://webhooks.jellyfish.co/deployment
+
+  build_pages:
+    executor: node/default
+    steps:
+     - checkout
+     - aws-cli/setup:
+        role_arn: $CIRCLECI_OIDC_ROLE
+     - run: sudo npm install -g npm@latest
+     - node/install-packages:
+         cache-path: ~/project/node_modules
+         override-ci-command: npm install
+     - run: npm run test
+

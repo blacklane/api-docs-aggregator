@@ -19,6 +19,10 @@
         {
             "name": "Reference Code Validator",
             "url": "https://github.com/blacklane/reference-code-validator/blob/main/docs/swagger.yaml"
+        },
+        {
+            "name": "User Profiles",
+            "url": "https://github.com/blacklane/user-profiles/blob/main/docs/swagger.yaml"
         }
     ]
 }
