@@ -38,8 +38,8 @@ jobs:
     executor: node/default
     steps:
      - checkout
-     - aws-cli/setup:
-        role_arn: $CIRCLECI_OIDC_ROLE
+    #  - aws-cli/setup:
+    #     role_arn: $CIRCLECI_OIDC_ROLE
      - run: sudo npm install -g npm@latest
      - node/install-packages:
          cache-path: ~/project/node_modules
