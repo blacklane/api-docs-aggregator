@@ -10,30 +10,29 @@ workflows:
     jobs:
       - build_pages:
           context: infra-public-sdlc
-      # - build_and_deploy:
-      #     context: infra-public-sdlc
-      #     filters:
-      #       branches:
-      #         only: main
+      - build_and_deploy:
+          context: infra-public-sdlc
+          filters:
+            branches:
+              only: main
 
 jobs:
-  # build_and_deploy:
-  #   
-  #   executor: node/default
-  #   steps:
-  #    - checkout
-  #    - aws-cli/setup:
-  #       role_arn: $CIRCLECI_OIDC_ROLE
-  #    - run: sudo npm install -g npm@latest
-  #    - node/install-packages:
-  #       cache-path: ~/project/node_modules
-  #       override-ci-command: npm install
-  #    - run: npm run build
-  #    - aws-s3/sync:
-  #       from: ~/project/dist
-  #       to: 's3://api-docs.sdlc-int.blacklane.io'
-  #    - run: |
-  #         curl -i -X POST -H 'Content-Type: application/json' -H "X-jf-api-token: $JELLYFISH_TOKEN" -d '{"reference_id": "'$CIRCLE_BUILD_URL'", "is_successful": "true", "deployed_at": "'"$(date '+%F %T')"'", "name": "Deploying '$CIRCLE_PROJECT_REPONAME' ",  "repo_name": "'blacklane/$CIRCLE_PROJECT_REPONAME'", "commit_shas": ["'$CIRCLE_SHA1'"], "source_url": "'https://github.com/blacklane/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1'", "labels": ["team:devex", "app:handbook"] }' https://webhooks.jellyfish.co/deployment
+  build_and_deploy:
+    executor: node/default
+    steps:
+     - checkout
+     - aws-cli/setup:
+        role_arn: $CIRCLECI_OIDC_ROLE
+     - run: sudo npm install -g npm@latest
+     - node/install-packages:
+        cache-path: ~/project/node_modules
+        override-ci-command: npm install
+     - run: npm run build
+     - aws-s3/sync:
+        from: ~/project/dist
+        to: 's3://api-docs.sdlc-int.blacklane.io'
+     - run: |
+          curl -i -X POST -H 'Content-Type: application/json' -H "X-jf-api-token: $JELLYFISH_TOKEN" -d '{"reference_id": "'$CIRCLE_BUILD_URL'", "is_successful": "true", "deployed_at": "'"$(date '+%F %T')"'", "name": "Deploying '$CIRCLE_PROJECT_REPONAME' ",  "repo_name": "'blacklane/$CIRCLE_PROJECT_REPONAME'", "commit_shas": ["'$CIRCLE_SHA1'"], "source_url": "'https://github.com/blacklane/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1'", "labels": ["team:devex", "app:handbook"] }' https://webhooks.jellyfish.co/deployment
 
   build_pages:
     executor: node/default
