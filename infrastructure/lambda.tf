@@ -1,0 +1,45 @@
+resource "aws_iam_role" "lambda_exec" {
+  name = "GithubProxyLeambda"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Principal = {
+        Service = "lambda.amazonaws.com"
+      }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_policy" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_cloudwatch_log_group" "github-proxy" {
+  name              = "/aws/lambda/${aws_lambda_function.github-proxy.function_name}"
+  retention_in_days = 14
+}
+
+resource "aws_lambda_function" "github-proxy" {
+  filename      = "${path.module}/github_proxy.zip"
+  function_name = "GithubProxy"
+  role          = aws_iam_role.lambda_exec.arn
+  handler       = "lambda_function.lambda_handler"
+  description   = "Lambda used as proxy to access to files in private Github repository"
+  architectures = ["x86_64"]
+  timeout       = 10
+
+  runtime = "python3.12"
+  lifecycle {
+    ignore_changes = all
+  }
+  environment {
+    variables = {
+      GITHUB_TOKEN = ""
+    }
+  }
+
+}

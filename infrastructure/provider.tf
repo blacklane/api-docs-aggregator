@@ -3,7 +3,7 @@ provider "aws" {
     tags = {
       Team        = "DevEx"
       Application = "api-docs-aggregator"
-      Environment = "sdlc"
+      Environment = var.environment
       ManagedBy   = "Terraform"
       GitRepo     = "https://github.com/blacklane/api-docs-aggregator"
       Name        = "api-docs-aggregator"
