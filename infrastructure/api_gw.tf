@@ -115,3 +115,12 @@ resource "aws_api_gateway_integration_response" "options_response_200" {
     "application/json" = ""
   }
 }
+
+resource "aws_lambda_permission" "api_gateway" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.github-proxy.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_api_gateway_rest_api.github_api.execution_arn}/*/*"
+}
