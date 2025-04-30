@@ -37,6 +37,7 @@ resource "aws_api_gateway_integration" "lambda-integration-mock" {
 
   request_templates = {
     "application/json" = file("${path.module}/params_api_gw.json")
+  }
 }
 
 resource "aws_api_gateway_deployment" "api_deployment" {
