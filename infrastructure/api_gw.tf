@@ -75,7 +75,7 @@ data "aws_iam_policy_document" "gw-policy-docuemnt" {
     condition {
       test     = "IpAddress"
       variable = "aws:SourceIp"
-      values   = ["46.189.27.100/32", "93.241.23.242/32", "87.128.42.122/32"]
+      values   = 
     }
   }
 }
