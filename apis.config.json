@@ -23,6 +23,10 @@
         {
             "name": "User Profiles",
             "url": "https://github.com/blacklane/user-profiles/blob/main/docs/swagger.yaml"
-        }
+        },
+        {
+            "name": "Wallet Service",
+            "url": "https://github.com/blacklane/wallet-service/blob/main/docs/swag/swagger.yaml"
+        },
     ]
 }
