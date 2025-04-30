@@ -36,12 +36,7 @@ resource "aws_api_gateway_integration" "lambda-integration-mock" {
   type                 = "MOCK"
 
   request_templates = {
-    "application/json" = <<EOF
-{
-  "statusCode": 200
-}
-EOF
-  }
+    "application/json" = file("${path.module}/params_api_gw.json")
 }
 
 resource "aws_api_gateway_deployment" "api_deployment" {
