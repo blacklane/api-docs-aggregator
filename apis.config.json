@@ -27,6 +27,6 @@
         {
             "name": "Wallet Service",
             "url": "https://github.com/blacklane/wallet-service/blob/main/docs/swag/swagger.yaml"
-        },
+        }
     ]
 }
