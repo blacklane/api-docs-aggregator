@@ -10,17 +10,13 @@ function SwaggerUIComponent({ url, apiBaseUrl }) {
 				/https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/(.+)/,
 				"https://raw.githubusercontent.com/$1/$2/$3/$4",
 			);
-			req;
-			// return new Request(
-			// 	`${apiBaseUrl}?url=${encodeURIComponent(rawUrl)}`,
-			// 	req,
-			// );
-		}
 
-		return new Request(
-			`${apiBaseUrl}?url=${encodeURIComponent(req.url)}`,
-			req,
-		);
+			return new Request(
+				`${apiBaseUrl}?url=${encodeURIComponent(rawUrl)}`,
+				req,
+			);
+		}
+		return req;
 	};
 
 	return (
