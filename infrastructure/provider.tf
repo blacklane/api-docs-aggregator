@@ -1,9 +1,4 @@
 provider "aws" {
-  assume_role {
-    role_arn     = "arn:aws:iam::304609271557:role/terraform-sdlc"
-    session_name = "tfagentsdlc"
-    duration     = "1h"
-  }
   default_tags {
     tags = {
       Team        = "DevEx"
