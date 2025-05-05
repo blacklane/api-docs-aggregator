@@ -16,11 +16,10 @@ function SwaggerUIComponent({ url, apiBaseUrl }) {
 				req,
 			);
 		}
-		req;
-		// return new Request(
-		// 	`${apiBaseUrl}?url=${encodeURIComponent(req.url)}`,
-		// 	req,
-		// );
+		return new Request(
+			`${apiBaseUrl}?url=${encodeURIComponent(req.url)}`,
+			req,
+		);
 	};
 
 	return (
