@@ -17,6 +17,10 @@
             "url": "https://github.com/blacklane/bookings-service/blob/master/docs/openapi.yaml"
         },
         {
+            "name": "Live Activity Service",
+            "url": "https://github.com/blacklane/live-activity-service/blob/main/openapi/swagger.yaml"
+        },
+        {
             "name": "Reference Code Validator",
             "url": "https://github.com/blacklane/reference-code-validator/blob/main/docs/swagger.yaml"
         },
