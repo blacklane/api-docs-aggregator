@@ -69,7 +69,7 @@ resource "aws_lambda_function" "github-proxy" {
   }
 
   vpc_config {
-    subnet_ids = [""]
-    security_group_ids = []
+    subnet_ids         = ["subnet-00915b0f813a43c22", "subnet-0a895d78d3c40b3f6", "subnet-0e405b6089c2a67f7"]
+    security_group_ids = ["sg-07b28624f60a62444", "sg-0f6ecd676453ab00c"]
   }
 }
