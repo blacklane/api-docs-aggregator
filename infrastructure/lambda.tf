@@ -13,9 +13,35 @@ resource "aws_iam_role" "lambda_exec" {
   })
 }
 
+resource "aws_iam_policy" "create_ec2_interfaces" {
+  name        = "CreteEC2Interfaces"
+  path        = "/"
+  description = "Creating interfaces for Lambda"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ec2:*",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}
+
 resource "aws_iam_role_policy_attachment" "lambda_policy" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_iam_role_policy_attachment" "custom-policies" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = aws_iam_policy.create_ec2_interfaces.arn
 }
 
 resource "aws_cloudwatch_log_group" "github-proxy" {
@@ -42,4 +68,8 @@ resource "aws_lambda_function" "github-proxy" {
     }
   }
 
+  vpc_config {
+    subnet_ids         = ["subnet-00915b0f813a43c22", "subnet-0a895d78d3c40b3f6", "subnet-0e405b6089c2a67f7"]
+    security_group_ids = ["sg-07b28624f60a62444", "sg-0f6ecd676453ab00c"]
+  }
 }
