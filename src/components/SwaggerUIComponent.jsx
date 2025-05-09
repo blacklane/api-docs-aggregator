@@ -20,13 +20,15 @@ function SwaggerUIComponent({ url, apiBaseUrl }) {
 	};
 
 	return (
-		<SwaggerUI
-			url={url}
-			docExpansion="none"
-			displayRequestDuration
-			deepLinking
-			requestInterceptor={requestInterceptor}
-		/>
+		<div className="h-full overflow-hidden">
+			<SwaggerUI
+				url={url}
+				docExpansion="none"
+				displayRequestDuration
+				deepLinking
+				requestInterceptor={requestInterceptor}
+			/>
+		</div>
 	);
 }
 

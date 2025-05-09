@@ -86,6 +86,11 @@ img {
   transition: none !important;
 }
 
+.swagger-ui {
+  overflow: auto;
+  height: 100%;
+}
+
 /* Prevent SwaggerUI elements from being affected by the global transition */
 .swagger-ui,
 .swagger-ui * {
