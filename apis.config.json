@@ -34,7 +34,7 @@
         },
         {
             "name": "Flights Service",
-            "url": "https://github.com/blacklane/flights/blob/main/docs/swag/swagger.yaml"
+            "url": "https://github.com/blacklane/flights/blob/main/docs/swagger.yaml"
         }
     ]
 }
