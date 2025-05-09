@@ -11,10 +11,7 @@ function SwaggerUIComponent({ url, apiBaseUrl }) {
 				"https://raw.githubusercontent.com/$1/$2/$3/$4",
 			);
 
-			return new Request(
-				`${apiBaseUrl}?url=${encodeURIComponent(rawUrl)}`,
-				req,
-			);
+			req.url = rawUrl;
 		}
 		
 		req.url = `${apiBaseUrl}?url=${encodeURIComponent(req.url)}`

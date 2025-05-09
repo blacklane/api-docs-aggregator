@@ -31,6 +31,10 @@
         {
             "name": "Wallet Service",
             "url": "https://github.com/blacklane/wallet-service/blob/main/docs/swag/swagger.yaml"
+        },
+        {
+            "name": "Flights Service",
+            "url": "https://github.com/blacklane/flights/blob/main/docs/swag/swagger.yaml"
         }
     ]
 }
