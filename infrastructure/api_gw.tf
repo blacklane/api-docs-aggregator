@@ -4,6 +4,13 @@ resource "aws_api_gateway_rest_api" "github-proxy-api" {
   endpoint_configuration {
     types = ["REGIONAL"]
   }
+  binary_media_types = [
+    "application/octet-stream",
+    "image/webp",
+    "image/jpg",
+    "image/png",
+    "image/jpeg"
+  ]
 }
 
 resource "aws_api_gateway_method" "method" {
@@ -30,10 +37,10 @@ resource "aws_api_gateway_integration" "lambda-integration" {
 }
 
 resource "aws_api_gateway_integration" "lambda-integration-mock" {
-  rest_api_id          = aws_api_gateway_rest_api.github-proxy-api.id
-  resource_id          = aws_api_gateway_rest_api.github-proxy-api.root_resource_id
-  http_method          = aws_api_gateway_method.method-options.http_method
-  type                 = "MOCK"
+  rest_api_id = aws_api_gateway_rest_api.github-proxy-api.id
+  resource_id = aws_api_gateway_rest_api.github-proxy-api.root_resource_id
+  http_method = aws_api_gateway_method.method-options.http_method
+  type        = "MOCK"
 
   request_templates = {
     "application/json" = file("${path.module}/params_api_gw.json")
@@ -78,10 +85,10 @@ resource "aws_api_gateway_method_response" "options_response_200" {
     "method.response.header.Access-Control-Allow-Origin"  = true
   }
 
-   lifecycle {
+  lifecycle {
     ignore_changes = [response_parameters]
   }
-  
+
 }
 
 resource "aws_api_gateway_integration_response" "options_response_200" {
