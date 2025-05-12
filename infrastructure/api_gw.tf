@@ -118,8 +118,10 @@ data "aws_iam_policy_document" "gw-policy-document" {
       identifiers = ["*"]
     }
 
-    actions   = ["execute-api:Invoke"]
-    resources = ["${aws_api_gateway_rest_api.github-proxy-api.execution_arn}/*"]
+    actions = ["execute-api:Invoke"]
+    resources = [
+      "arn:${data.aws_partition.current.partition}:execute-api:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*/*"
+    ]
 
     condition {
       test     = "IpAddress"
