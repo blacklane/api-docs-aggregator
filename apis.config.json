@@ -1,12 +1,12 @@
 {
     "apis": [
         {
-            "name": "Athena",
-            "url": "https://github.com/blacklane/api-docs/blob/master/schemas/athena.yml"
+            "name": "Chauffeur Management Api",
+            "url": "https://github.com/blacklane/chauffeur-management-api/blob/main/docs/swagger.yaml"
         },
         {
-            "name": "Emirates",
-            "url": "https://github.com/blacklane/api-docs/blob/master/schemas/emirates.yml"
+            "name": "Shopping Cart",
+            "url": "https://github.com/blacklane/shopping-cart/blob/main/docs/swagger.yaml"
         },
         {
             "name": "Geoservice",
@@ -35,6 +35,30 @@
         {
             "name": "Flights Service",
             "url": "https://github.com/blacklane/flights/blob/main/docs/swagger.yaml"
+        },
+        {
+            "name": "Pricing Bff",
+            "url": "https://github.com/blacklane/pricing-bff/blob/main/docs/swagger.yaml" 
+        },
+        {
+            "name": "Push Notifications",
+            "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml" 
+        },
+        {
+            "name": "Chat Service",
+            "url": "https://github.com/blacklane/chat-service/blob/main/docs/swagger.yaml" 
+        },
+        {
+            "name": "Service Catalog",
+            "url": "https://github.com/blacklane/service-catalog/blob/main/docs/swagger.yaml" 
+        },
+        {
+            "name": "Elli User Service",
+            "url": "https://github.com/blacklane/elli-user-service/blob/main/docs/swagger.yaml" 
+        },
+        {
+            "name": "Users Acitivity",
+            "url": "https://github.com/blacklane/users-activity/blob/main/docs/swagger.yaml" 
         }
     ]
 }
