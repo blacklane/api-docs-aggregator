@@ -120,7 +120,7 @@ data "aws_iam_policy_document" "gw-policy-document" {
 
     actions = ["execute-api:Invoke"]
     resources = [
-      "arn:${data.aws_partition.current.partition}:execute-api:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*/*"
+      "arn:${data.aws_partition.current.partition}:execute-api:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:jca0hsut6k/*"
     ]
 
     condition {
