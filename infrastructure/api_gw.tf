@@ -44,7 +44,7 @@ resource "aws_api_gateway_integration" "lambda-integration-mock" {
   type        = "MOCK"
 
   request_templates = {
-    "application/json" = file("${path.module}/params_api_gw.json")
+    "application/json" = "{\"statusCode\": 200}"
   }
 }
 
