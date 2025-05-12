@@ -4,13 +4,13 @@ resource "aws_api_gateway_rest_api" "github-proxy-api" {
   endpoint_configuration {
     types = ["REGIONAL"]
   }
-  binary_media_types = [
-    "application/octet-stream",
-    "image/webp",
-    "image/jpg",
-    "image/png",
-    "image/jpeg"
-  ]
+  # binary_media_types = [
+  #   "application/octet-stream",
+  #   "image/webp",
+  #   "image/jpg",
+  #   "image/png",
+  #   "image/jpeg"
+  # ]
 }
 
 resource "aws_api_gateway_method" "method" {
