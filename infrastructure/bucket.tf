@@ -30,7 +30,11 @@ resource "aws_s3_bucket_ownership_controls" "api-doc" {
 
 resource "aws_s3_bucket_policy" "api-doc" {
   bucket = aws_s3_bucket.api-doc.id
-  policy = file("${path.module}/s3-policy.json")
+  policy = templatefile("${path.module}/s3-policy.json.tpl", {
+    bucket_name     = aws_s3_bucket.my_app_bucket.bucket
+    distribution_id = aws_cloudfront_distribution.frontend.id
+    account_id      = data.aws_caller_identity.current.account_id
+  })
 }
 
 resource "aws_s3_bucket_public_access_block" "api-doc" {

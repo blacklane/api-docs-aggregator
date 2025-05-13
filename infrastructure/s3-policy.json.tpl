@@ -7,8 +7,8 @@
       "Principal": "*",
       "Action": "s3:*",
       "Resource": [
-        "arn:aws:s3:::api-docs.sdlc-int.blacklane.io",
-        "arn:aws:s3:::api-docs.sdlc-int.blacklane.io/*"
+        "arn:aws:s3:::${bucket_name}",
+        "arn:aws:s3:::${bucket_name}/*"
       ],
       "Condition": {
         "IpAddress": {
@@ -27,10 +27,10 @@
         "Service": "cloudfront.amazonaws.com"
       },
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::api-docs.sdlc-int.blacklane.io/*",
+      "Resource": "arn:aws:s3:::${bucket_name}/*",
       "Condition": {
         "StringEquals": {
-          "AWS:SourceArn": "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${aws_cloudfront_origin_access_control.oac.id}"
+          "AWS:SourceArn": "arn:aws:cloudfront::${account_id}:distribution/${distribution_id}"
         }
       }
     }
