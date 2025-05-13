@@ -12,8 +12,20 @@ resource "aws_cloudfront_distribution" "frontend" {
 
   aliases = ["api-docs"]
 
+  custom_error_response {
+    error_code         = 403
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
+
+  custom_error_response {
+    error_code         = 404
+    response_code      = 200
+    response_page_path = "/index.html"
+  }
+
   origin {
-    domain_name = "${aws_s3_bucket.api-doc.bucket_regional_domain_name}"
+    domain_name = aws_s3_bucket.api-doc.bucket_regional_domain_name
     origin_id   = "s3-origin"
 
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
@@ -32,6 +44,7 @@ resource "aws_cloudfront_distribution" "frontend" {
         forward = "none"
       }
     }
+
   }
 
   viewer_certificate {
@@ -45,5 +58,5 @@ resource "aws_cloudfront_distribution" "frontend" {
       restriction_type = "none"
     }
   }
-
 }
+

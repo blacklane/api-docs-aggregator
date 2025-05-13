@@ -11,5 +11,4 @@ data "aws_caller_identity" "current" {}
 
 data "aws_acm_certificate" "cert" {
   domain = "sdlc-int.blacklane.io"
-  types  = ["AMAZON_ISSUED"]
 }
