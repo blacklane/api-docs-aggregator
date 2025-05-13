@@ -11,7 +11,7 @@
 
 
 resource "aws_route53_record" "frontend_alias" {
-  zone_id = data.aws_route53_zone.this.zone_id
+  zone_id = data.aws_route53_zone.sdlc-int-blacklane-io.id
   name    = "api-docs"
   type    = "A"
 
