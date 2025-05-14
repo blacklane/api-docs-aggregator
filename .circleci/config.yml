@@ -33,7 +33,7 @@ jobs:
     #      command: aws cloudfront create-invalidation --distribution-id --paths "/*"
      - aws-s3/sync:
         from: $HOME/project/dist
-        to: 's3://api-docs.sdlc-int.blacklane.io'
+        to: 's3://api-docs.sdlc.blacklane.io'
      
   build_pages_testing:
     executor: node/default
@@ -51,4 +51,4 @@ jobs:
     #      command: aws cloudfront create-invalidation --distribution-id --paths "/*"
      - aws-s3/sync:
         from: $HOME/project/dist
-        to: 's3://testing-api-docs.sdlc-int.blacklane.io'
+        to: 's3://testing-api-docs.sdlc.blacklane.io'

@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "api-doc" {
-  bucket = "api-docs.sdlc-int.blacklane.io"
+  bucket = "api-docs.sdlc.blacklane.io"
 }
 
 resource "aws_s3_bucket_versioning" "api-doc" {
