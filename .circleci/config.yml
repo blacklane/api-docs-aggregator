@@ -28,9 +28,12 @@ jobs:
         cache-path: ~/project/node_modules
         override-ci-command: npm install
      - run: npm run build
+    #  - run:
+    #      name: Invalidate CloudFront Cache
+    #      command: aws cloudfront create-invalidation --distribution-id --paths "/*"
      - aws-s3/sync:
         from: $HOME/project/dist
-        to: 's3://api-docs.sdlc-int.blacklane.io'
+        to: 's3://api-docs.sdlc.blacklane.io'
      
   build_pages_testing:
     executor: node/default
@@ -43,6 +46,9 @@ jobs:
          cache-path: ~/project/node_modules
          override-ci-command: npm install
      - run: PUBLIC_SWAGGER_API_URL=$TESTING_PUBLIC_SWAGGER_API_URL npm run build
+    #  - run:
+    #      name: Invalidate CloudFront Cache
+    #      command: aws cloudfront create-invalidation --distribution-id --paths "/*"
      - aws-s3/sync:
         from: $HOME/project/dist
-        to: 's3://testing-api-docs.sdlc-int.blacklane.io'
+        to: 's3://testing-api-docs.sdlc.blacklane.io'
