@@ -1,5 +1,5 @@
-data "aws_route53_zone" "sdlc-int-blacklane-io" {
-  name         = "sdlc.blacklane.io."
+data "aws_route53_zone" "sdlc-blacklane-io" {
+  name         = "*.sdlc.blacklane.io"
   private_zone = true
 }
 
@@ -10,5 +10,5 @@ data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
 
 data "aws_acm_certificate" "cert" {
-  domain = "sdlc.blacklane.io"
+  domain = "*.sdlc.blacklane.io"
 }
