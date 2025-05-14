@@ -1,5 +1,6 @@
 data "aws_route53_zone" "sdlc-blacklane-io" {
-  name = "sdlc.blacklane.io."
+  provider = aws.us-east-1
+  name     = "sdlc.blacklane.io."
 }
 
 data "aws_partition" "current" {}
