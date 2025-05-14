@@ -15,3 +15,18 @@ provider "aws" {
     }
   }
 }
+
+provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+  default_tags {
+    tags = {
+      Team        = "devex"
+      Application = "core-infrastructure"
+      Environment = var.environment
+      ManagedBy   = "Terraform"
+      GitRepo     = "https://github.com/blacklane/aws-core-infrastructure"
+      Name        = "core-infrastructure-production-resource"
+    }
+  }
+}

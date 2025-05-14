@@ -9,5 +9,7 @@ data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
 
 data "aws_acm_certificate" "cert" {
-  domain = "*.sdlc.blacklane.io"
+  provider = aws.us-east-1
+  domain   = "*.sdlc.blacklane.io"
 }
+
