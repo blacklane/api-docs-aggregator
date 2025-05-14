@@ -1,5 +1,5 @@
 data "aws_route53_zone" "sdlc-blacklane-io" {
-  name         = "*.sdlc.blacklane.io"
+  name = "*.sdlc.blacklane.io."
 }
 
 data "aws_partition" "current" {}
