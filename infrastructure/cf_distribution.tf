@@ -10,7 +10,7 @@ resource "aws_cloudfront_distribution" "frontend" {
   enabled             = true
   default_root_object = "index.html"
 
-  aliases = ["api-docs"]
+  aliases = ["api-docs.sdlc.blacklane.io"]
 
   custom_error_response {
     error_code         = 403
