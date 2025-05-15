@@ -50,6 +50,6 @@ resource "aws_wafv2_web_acl" "ip_restrict_acl" {
 }
 
 resource "aws_wafv2_web_acl_association" "cloudfront_acl_assoc" {
-  resource_arn = aws_cloudfront_distribution.frontend.arn
+  resource_arn = "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${aws_cloudfront_distribution.frontend.id}"
   web_acl_arn  = aws_wafv2_web_acl.ip_restrict_acl.arn
 }
