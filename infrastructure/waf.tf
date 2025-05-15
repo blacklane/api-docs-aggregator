@@ -1,4 +1,5 @@
 resource "aws_wafv2_ip_set" "allowed_ips" {
+  provider           = aws.us-east-1
   name               = "allowed-ips"
   description        = "Allowed Office IPs for api-docs"
   scope              = "CLOUDFRONT"
@@ -12,6 +13,7 @@ resource "aws_wafv2_ip_set" "allowed_ips" {
 }
 
 resource "aws_wafv2_web_acl" "ip_restrict_acl" {
+  provider    = aws.us-east-1
   name        = "cloudfront-ip-restrict"
   description = "Access to api-docs only allowed from Office IPs"
   scope       = "CLOUDFRONT"
