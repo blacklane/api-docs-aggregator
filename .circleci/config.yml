@@ -28,9 +28,9 @@ jobs:
         cache-path: ~/project/node_modules
         override-ci-command: npm install
      - run: npm run build
-    #  - run:
-    #      name: Invalidate CloudFront Cache
-    #      command: aws cloudfront create-invalidation --distribution-id --paths "/*"
+     - run:
+         name: Invalidate CloudFront Cache
+         command: aws cloudfront create-invalidation --distribution-id E3MNKGZ3ZPDW10 --paths "/*"
      - aws-s3/sync:
         from: $HOME/project/dist
         to: 's3://api-docs.sdlc.blacklane.io'
