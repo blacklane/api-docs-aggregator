@@ -23,7 +23,7 @@ resource "aws_wafv2_web_acl" "ip_restrict_acl" {
 
   rule {
     name     = "AllowListedIPs"
-    priority = 0
+    priority = 1
 
     action {
       allow {}
@@ -47,4 +47,9 @@ resource "aws_wafv2_web_acl" "ip_restrict_acl" {
     metric_name                = "CloudFrontWebACL"
     sampled_requests_enabled   = true
   }
+}
+
+resource "aws_wafv2_web_acl_association" "cloudfront_acl_assoc" {
+  resource_arn = aws_cloudfront_distribution.frontend.arn
+  web_acl_arn  = aws_wafv2_web_acl.ip_restrict_acl.arn
 }
