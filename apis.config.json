@@ -55,10 +55,6 @@
         {
             "name": "Elli User Service",
             "url": "https://github.com/blacklane/elli-user-service/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Users Acitivity",
-            "url": "https://github.com/blacklane/users-activity/blob/main/docs/swagger.yaml" 
         }
     ]
 }
