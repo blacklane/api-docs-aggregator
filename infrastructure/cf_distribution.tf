@@ -35,10 +35,6 @@ resource "aws_cloudfront_distribution" "frontend" {
       origin_ssl_protocols   = ["TLSv1.2", "TLSv1.1"]
     }
 
-    # origin_custom_header {
-    #   name  = "Referer"
-    #   value = ""
-    # }
   }
 
   default_cache_behavior {
@@ -67,6 +63,9 @@ resource "aws_cloudfront_distribution" "frontend" {
     geo_restriction {
       restriction_type = "none"
     }
+  }
+  lifecycle {
+    ignore_changes = all
   }
 }
 
