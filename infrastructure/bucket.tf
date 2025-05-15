@@ -35,6 +35,9 @@ resource "aws_s3_bucket_policy" "api-doc" {
     distribution_id = aws_cloudfront_distribution.frontend.id
     account_id      = data.aws_caller_identity.current.account_id
   })
+  lifecycle {
+    ignore_changes = all
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "api-doc" {
