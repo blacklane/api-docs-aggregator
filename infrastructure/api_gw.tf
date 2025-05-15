@@ -63,12 +63,12 @@ resource "aws_api_gateway_stage" "api_stage" {
   stage_name    = "prod"
   rest_api_id   = aws_api_gateway_rest_api.github-proxy-api.id
   deployment_id = aws_api_gateway_deployment.api_deployment.id
-}
 
-# resource "aws_api_gateway_rest_api_policy" "gw-policy" {
-#   rest_api_id = aws_api_gateway_rest_api.github-proxy-api.id
-#   policy      = data.aws_iam_policy_document.gw-policy-document.json
-# }
+  lifecycle {
+    ignore_changes = all
+  }
+
+}
 
 resource "aws_api_gateway_method_response" "options_response_200" {
   rest_api_id = aws_api_gateway_rest_api.github-proxy-api.id
