@@ -26,15 +26,20 @@ resource "aws_cloudfront_distribution" "frontend" {
 
   origin {
     domain_name = aws_s3_bucket.api-doc.bucket_regional_domain_name
-    origin_id   = "api-docs"
+  origin_id   = "api-docs"
 
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only" # S3 website endpoints only support HTTP
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
+  custom_origin_config {
+    http_port              = 80
+    https_port             = 443
+    origin_protocol_policy = "http-only"
+    origin_ssl_protocols   = ["TLSv1.2"]
   }
+
+  # origin_custom_header {
+  #   name  = "Referer"
+  #   value = ""
+  # }
+}
 
   default_cache_behavior {
     target_origin_id       = "api-docs"
