@@ -64,9 +64,9 @@ resource "aws_cloudfront_distribution" "frontend" {
       restriction_type = "none"
     }
   }
-  # lifecycle {
-  #   ignore_changes = all
-  # }
+  lifecycle {
+    ignore_changes = all
+  }
   web_acl_id = aws_wafv2_web_acl.ip_restrict_acl.arn
 }
 
