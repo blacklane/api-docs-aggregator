@@ -26,7 +26,7 @@ resource "aws_cloudfront_distribution" "frontend" {
 
   origin {
     domain_name = aws_s3_bucket.api-doc.bucket_regional_domain_name
-    origin_id   = "s3-origin"
+    origin_id   = "api-docs"
 
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
   }
@@ -34,7 +34,7 @@ resource "aws_cloudfront_distribution" "frontend" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "s3-origin"
+    target_origin_id = "api-docs"
 
     viewer_protocol_policy = "redirect-to-https"
 
