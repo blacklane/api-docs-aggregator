@@ -63,8 +63,6 @@ resource "aws_cloudfront_distribution" "frontend" {
     minimum_protocol_version = "TLSv1.2_2021"
   }
 
-  price_class = "PriceClass_All"
-
   restrictions {
     geo_restriction {
       restriction_type = "none"
