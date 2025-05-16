@@ -71,6 +71,10 @@
         {
             "name": "Atlas",
             "url": "https://github.com/blacklane/atlas/blob/master/docs/atlas.json" 
+        },
+        {
+            "name": "Emirates",
+            "url": "https://github.com/blacklane/emirates/blob/master/doc/emirates.json" 
         }
     ]
 }
