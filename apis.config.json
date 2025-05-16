@@ -59,10 +59,6 @@
         {
             "name": "Users Acitivity",
             "url": "https://github.com/blacklane/users-activity/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Athena",
-            "url": "https://github.com/blacklane/api-docs/blob/master/schemas/athena.yml" 
         }
     ]
 }
