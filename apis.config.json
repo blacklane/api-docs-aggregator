@@ -63,6 +63,14 @@
         {
             "name": "Athena",
             "url": "https://github.com/blacklane/athena/blob/master/docs/athena.json" 
+        },
+        {
+            "name": "Lethe",
+            "url": "https://github.com/blacklane/lethe/blob/master/docs/lethe.json" 
+        },
+        {
+            "name": "Atlas",
+            "url": "https://github.com/blacklane/atlas/blob/master/docs/atlas.json" 
         }
     ]
 }
