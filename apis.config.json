@@ -66,11 +66,11 @@
     },
     {
       "name": "Mercury",
-      "url": "https://github.com/blacklane/mercury/tree/master/docs/mercury.json"
+      "url": "https://github.com/blacklane/mercury/blob/master/docs/mercury.json"
     },
 {
       "name": "Poseidon",
-      "url": "https://github.com/blacklane/elli/tree/master/docs/poseidon.json"
+      "url": "https://github.com/blacklane/elli/blob/master/docs/poseidon.json"
     },
     {
       "name": "Pricing Bff",
@@ -118,7 +118,7 @@
     },
     {
       "name": "Supply Prices",
-      "url": "https://github.com/blacklane/supply_prices/tree/master/docs/supply_prices.json"
+      "url": "https://github.com/blacklane/supply_prices/blob/master/docs/supply_prices.json"
     },
     {
       "name": "User Profiles",
