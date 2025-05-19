@@ -65,6 +65,14 @@
       "url": "https://github.com/blacklane/live-activity-service/blob/main/openapi/swagger.yaml"
     },
     {
+      "name": "Mercury",
+      "url": "https://github.com/blacklane/mercury/tree/master/docs/mercury.json"
+    },
+{
+      "name": "Poseidon",
+      "url": "https://github.com/blacklane/elli/tree/master/docs/poseidon.json"
+    },
+    {
       "name": "Pricing Bff",
       "url": "https://github.com/blacklane/pricing-bff/blob/main/docs/swagger.yaml"
     },
@@ -87,6 +95,10 @@
     {
       "name": "Push Notifications",
       "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Ride Bundler",
+      "url": "https://github.com/blacklane/ride-bundler/blob/main/docs/ride_bundler.json"
     },
     {
       "name": "Rendering Service",
