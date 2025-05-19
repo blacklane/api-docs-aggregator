@@ -89,6 +89,10 @@
       "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml"
     },
     {
+      "name": "Ride Bundler",
+      "url": "https://github.com/blacklane/ride-bundler/blob/main/docs/ride_bundler.json"
+    },
+    {
       "name": "Rendering Service",
       "url": "https://github.com/blacklane/rendering-service/blob/master/docs/rendering-service.yaml"
     },
