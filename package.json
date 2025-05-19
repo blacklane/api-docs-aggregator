@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.5",
-    "astro": "^5.7.12",
+    "astro": "^5.7.13",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "swagger-ui-react": "^5.21.0"
