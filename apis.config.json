@@ -1,108 +1,108 @@
 {
-    "apis": [
-        {
-            "name": "Chauffeur Management Api",
-            "url": "https://github.com/blacklane/chauffeur-management-api/blob/main/docs/swagger.yaml"
-        },
-        {
-            "name": "Shopping Cart",
-            "url": "https://github.com/blacklane/shopping-cart/blob/main/docs/swagger.yaml"
-        },
-        {
-            "name": "Geoservice",
-            "url": "https://github.com/blacklane/geoservice/blob/main/docs/swagger.yaml"
-        },
-        {
-            "name": "Bookings Service",
-            "url": "https://github.com/blacklane/bookings-service/blob/master/docs/openapi.yaml"
-        },
-        {
-            "name": "Live Activity Service",
-            "url": "https://github.com/blacklane/live-activity-service/blob/main/openapi/swagger.yaml"
-        },
-        {
-            "name": "Reference Code Validator",
-            "url": "https://github.com/blacklane/reference-code-validator/blob/main/docs/swagger.yaml"
-        },
-        {
-            "name": "User Profiles",
-            "url": "https://github.com/blacklane/user-profiles/blob/main/docs/swagger.yaml"
-        },
-        {
-            "name": "Wallet Service",
-            "url": "https://github.com/blacklane/wallet-service/blob/main/docs/swag/swagger.yaml"
-        },
-        {
-            "name": "Flights Service",
-            "url": "https://github.com/blacklane/flights/blob/main/docs/swagger.yaml"
-        },
-        {
-            "name": "Pricing Bff",
-            "url": "https://github.com/blacklane/pricing-bff/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Push Notifications",
-            "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Chat Service",
-            "url": "https://github.com/blacklane/chat-service/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Service Catalog",
-            "url": "https://github.com/blacklane/service-catalog/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Elli User Service",
-            "url": "https://github.com/blacklane/elli-user-service/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Users Acitivity",
-            "url": "https://github.com/blacklane/users-activity/blob/main/docs/swagger.yaml" 
-        },
-        {
-            "name": "Athena",
-            "url": "https://github.com/blacklane/athena/blob/master/docs/athena.json" 
-        },
-        {
-            "name": "Lethe",
-            "url": "https://github.com/blacklane/lethe/blob/master/docs/lethe.json" 
-        },
-        {
-            "name": "Atlas",
-            "url": "https://github.com/blacklane/atlas/blob/master/docs/atlas.json" 
-        },
-        {
-            "name": "Complimentary Gateway",
-            "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_gateway.json" 
-        },
-        {
-            "name": "Complimentary Manager",
-            "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_manager.json" 
-        },
-        {
-            "name": "Guest Prices",
-            "url": "https://github.com/blacklane/guest_prices/blob/master/docs/guest_prices.json" 
-        },
-        {
-            "name": "Pricing Composer",
-            "url": "https://github.com/blacklane/pricing_composer/blob/master/docs/pricing_composer.json" 
-        },
-        {
-            "name": "Pricing Insurance",
-            "url": "https://github.com/blacklane/pricing_insurance/blob/main/docs/pricing_insurance.json" 
-        },
-        {
-            "name": "Pricing Insurance",
-            "url": "https://github.com/blacklane/pricing_multiplier/blob/main/docs/pricing_multiplier.json" 
-        },
-        {
-            "name": "Pricing Complimentary",
-            "url": "https://github.com/blacklane/pricing_complimentary/blob/main/docs/pricing_complimentary.json" 
-        },
-        {
-            "name": "Supply Prices",
-            "url": "https://github.com/blacklane/supply_prices/tree/master/docs/supply_prices.json" 
-        }
-    ]
+  "apis": [
+    {
+      "name": "Athena",
+      "url": "https://github.com/blacklane/athena/blob/master/docs/athena.json"
+    },
+    {
+      "name": "Atlas",
+      "url": "https://github.com/blacklane/atlas/blob/master/docs/atlas.json"
+    },
+    {
+      "name": "Bookings Service",
+      "url": "https://github.com/blacklane/bookings-service/blob/master/docs/openapi.yaml"
+    },
+    {
+      "name": "Chauffeur Management Api",
+      "url": "https://github.com/blacklane/chauffeur-management-api/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Chat Service",
+      "url": "https://github.com/blacklane/chat-service/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Complimentary Gateway",
+      "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_gateway.json"
+    },
+    {
+      "name": "Complimentary Manager",
+      "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_manager.json"
+    },
+    {
+      "name": "Elli User Service",
+      "url": "https://github.com/blacklane/elli-user-service/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Flights Service",
+      "url": "https://github.com/blacklane/flights/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Geoservice",
+      "url": "https://github.com/blacklane/geoservice/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Guest Prices",
+      "url": "https://github.com/blacklane/guest_prices/blob/master/docs/guest_prices.json"
+    },
+    {
+      "name": "Lethe",
+      "url": "https://github.com/blacklane/lethe/blob/master/docs/lethe.json"
+    },
+    {
+      "name": "Live Activity Service",
+      "url": "https://github.com/blacklane/live-activity-service/blob/main/openapi/swagger.yaml"
+    },
+    {
+      "name": "Pricing Bff",
+      "url": "https://github.com/blacklane/pricing-bff/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Pricing Complimentary",
+      "url": "https://github.com/blacklane/pricing_complimentary/blob/main/docs/pricing_complimentary.json"
+    },
+    {
+      "name": "Pricing Composer",
+      "url": "https://github.com/blacklane/pricing_composer/blob/master/docs/pricing_composer.json"
+    },
+    {
+      "name": "Pricing Insurance",
+      "url": "https://github.com/blacklane/pricing_insurance/blob/main/docs/pricing_insurance.json"
+    },
+    {
+      "name": "Pricing Insurance",
+      "url": "https://github.com/blacklane/pricing_multiplier/blob/main/docs/pricing_multiplier.json"
+    },
+    {
+      "name": "Push Notifications",
+      "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Reference Code Validator",
+      "url": "https://github.com/blacklane/reference-code-validator/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Service Catalog",
+      "url": "https://github.com/blacklane/service-catalog/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Shopping Cart",
+      "url": "https://github.com/blacklane/shopping-cart/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Supply Prices",
+      "url": "https://github.com/blacklane/supply_prices/tree/master/docs/supply_prices.json"
+    },
+    {
+      "name": "User Profiles",
+      "url": "https://github.com/blacklane/user-profiles/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Users Acitivity",
+      "url": "https://github.com/blacklane/users-activity/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Wallet Service",
+      "url": "https://github.com/blacklane/wallet-service/blob/main/docs/swag/swagger.yaml"
+    }
+  ]
 }
