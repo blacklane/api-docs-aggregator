@@ -85,6 +85,10 @@
       "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml"
     },
     {
+      "name": "Rendering Service",
+      "url": "https://github.com/blacklane/rendering-service/blob/master/docs/rendering-service.yaml"
+    },
+    {
       "name": "Reference Code Validator",
       "url": "https://github.com/blacklane/reference-code-validator/blob/main/docs/swagger.yaml"
     },
