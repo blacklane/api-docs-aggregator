@@ -33,6 +33,10 @@
       "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_manager.json"
     },
     {
+      "name": "Elli Internal",
+      "url": "https://github.com/blacklane/elli/blob/master/docs/internal.json"
+    },
+    {
       "name": "Elli User Service",
       "url": "https://github.com/blacklane/elli-user-service/blob/main/docs/swagger.yaml"
     },
@@ -83,6 +87,10 @@
     {
       "name": "Push Notifications",
       "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml"
+    },
+    {
+      "name": "Rendering Service",
+      "url": "https://github.com/blacklane/rendering-service/blob/master/docs/rendering-service.yaml"
     },
     {
       "name": "Reference Code Validator",
