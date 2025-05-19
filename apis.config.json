@@ -71,6 +71,38 @@
         {
             "name": "Atlas",
             "url": "https://github.com/blacklane/atlas/blob/master/docs/atlas.json" 
+        },
+        {
+            "name": "Complimentary Gateway",
+            "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_gateway.json" 
+        },
+        {
+            "name": "Complimentary Manager",
+            "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_manager.json" 
+        },
+        {
+            "name": "Guest Prices",
+            "url": "https://github.com/blacklane/guest_prices/blob/master/docs/guest_prices.json" 
+        },
+        {
+            "name": "Pricing Composer",
+            "url": "https://github.com/blacklane/pricing_composer/blob/master/docs/pricing_composer.json" 
+        },
+        {
+            "name": "Pricing Insurance",
+            "url": "https://github.com/blacklane/pricing_insurance/blob/main/docs/pricing_insurance.json" 
+        },
+        {
+            "name": "Pricing Insurance",
+            "url": "https://github.com/blacklane/pricing_multiplier/blob/main/docs/pricing_multiplier.json" 
+        },
+        {
+            "name": "Pricing Complimentary",
+            "url": "https://github.com/blacklane/pricing_complimentary/blob/main/docs/pricing_complimentary.json" 
+        },
+        {
+            "name": "Supply Prices",
+            "url": "https://github.com/blacklane/supply_prices/tree/master/docs/supply_prices.json" 
         }
     ]
 }
