@@ -33,6 +33,10 @@
       "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_manager.json"
     },
     {
+      "name": "Elli Internal",
+      "url": "https://github.com/blacklane/elli/blob/master/docs/internal.json"
+    }
+    {
       "name": "Elli User Service",
       "url": "https://github.com/blacklane/elli-user-service/blob/main/docs/swagger.yaml"
     },
