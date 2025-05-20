@@ -1,0 +1,82 @@
+---
+import { events } from "../config/events";
+
+interface Props {
+	eventName: string;
+}
+
+const { eventName } = Astro.props;
+// API base URL from environment variable
+const API_BASE_URL = import.meta.env.PUBLIC_SWAGGER_API_URL || "";
+// Find the event by name (case insensitive)
+const currentEvent = events.find(
+	(event) => event.name.toLowerCase() === (eventName?.toLowerCase() || ""),
+);
+
+// Define a custom URL for the AsyncAPI component to use
+let asyncApiUrl = currentEvent?.url || "";
+if (asyncApiUrl.startsWith("https://github.com")) {
+	// Transform GitHub URLs to raw.githubusercontent.com
+	const rawUrl = asyncApiUrl.replace(
+		/https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/(.+)/,
+		"https://raw.githubusercontent.com/$1/$2/$3/$4",
+	);
+
+	asyncApiUrl = rawUrl;
+}
+
+asyncApiUrl = `${API_BASE_URL}?url=${encodeURIComponent(asyncApiUrl)}`;
+---
+
+{!currentEvent ? (
+    <div class="flex justify-center items-center h-full text-gray-500 dark:text-zinc-400 text-lg bg-gray-50 dark:bg-zinc-900">
+        Event not found
+    </div>
+) : (
+    <div class="absolute inset-0">
+       <asyncapi-component
+        id="asyncapi-viewer"
+        schemaUrl={asyncApiUrl}
+        config='{"show": {"info": false}}'
+        schemaFetchOptions='{"method":"GET","mode":"cors"}'
+        cssImportPath="https://unpkg.com/@asyncapi/react-component@latest/styles/default.min.css">
+        </asyncapi-component>
+    </div>
+    <script src="https://unpkg.com/@asyncapi/web-component@latest/lib/asyncapi-web-component.js" defer></script>
+    <script>
+      function updateAsyncApiTheme() {
+        var asyncapi = document.getElementById('asyncapi-viewer');
+        if (!asyncapi) return;
+        var isDark = document.documentElement.classList.contains('dark');
+        asyncapi.setAttribute('cssImportPath', isDark
+          ? '/styles/async-api-dark-theme.css'
+          : 'https://unpkg.com/@asyncapi/react-component@latest/styles/default.min.css');
+      }
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        updateAsyncApiTheme();
+        // Watch for changes to the html class attribute
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+              updateAsyncApiTheme();
+            }
+          });
+        });
+        observer.observe(document.documentElement, { attributes: true });
+      });
+    </script>
+)}
+
+<style>
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        font-size: 1.25rem;
+        color: #6b7280;
+    }
+</style>
+
+<link rel="preload" href="/styles/async-api-dark-theme.css" as="style">

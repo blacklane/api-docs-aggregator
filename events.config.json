@@ -1,0 +1,8 @@
+{
+    "apis": [
+        {
+            "name": "Booking Service",
+            "url": "https://github.com/blacklane/bookings-service/blob/402c2fbe05a0c3078afa9023c1046dc7d8d2c2e7/docs/events.yaml"
+        }
+    ]
+}

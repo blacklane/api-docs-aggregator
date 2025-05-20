@@ -114,3 +114,110 @@ img {
 .dark .swagger-ui img {
   filter: invert(100%) hue-rotate(180deg);
 }
+
+
+/* Dark theme override for AsyncAPI React Component v2.6.3 */
+
+:root {
+	--bg-color: #121212;
+	--text-color: #e0e0e0;
+	--border-color: #333;
+	--card-bg-color: #1e1e1e;
+	--section-bg-color: #1a1a1a;
+	--accent-color: #bb86fc;
+	--link-color: #90caf9;
+	--scrollbar-thumb: #555;
+	--scrollbar-track: #222;
+}
+
+/* General background and text */
+.dark .asyncapi {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+.dark .asyncapi a {
+	color: var(--link-color);
+}
+
+.dark .asyncapi a:hover {
+	color: var(--accent-color);
+}
+
+/* Header */
+.dark .asyncapi .header {
+	background-color: var(--section-bg-color);
+	color: var(--text-color);
+	border-bottom: 1px solid var(--border-color);
+}
+
+/* Sidebar */
+.dark .asyncapi .sidebar {
+	background-color: var(--card-bg-color);
+	border-right: 1px solid var(--border-color);
+}
+
+/* Content panels */
+.dark .asyncapi .info,
+.dark .asyncapi .servers,
+.dark .asyncapi .operations,
+.dark .asyncapi .messages,
+.dark .asyncapi .schemas,
+.dark .asyncapi .tags {
+	background-color: var(--section-bg-color);
+	color: var(--text-color);
+}
+
+/* Cards and borders */
+.dark .asyncapi .panel,
+.dark .asyncapi .card,
+.dark .asyncapi .schema,
+.dark .asyncapi .operation,
+.asyncapi .message {
+	background-color: var(--card-bg-color);
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+}
+
+/* Tables */
+.dark .asyncapi table {
+	background-color: var(--card-bg-color);
+	color: var(--text-color);
+}
+
+.dark .asyncapi table th,
+.dark .asyncapi table td {
+	border-color: var(--border-color);
+}
+
+/* Scrollbars */
+.dark .asyncapi ::-webkit-scrollbar {
+	width: 10px;
+}
+
+.dark .asyncapi ::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+.dark .asyncapi ::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb);
+}
+
+/* Buttons and interactive elements */
+.dark .asyncapi button {
+	background-color: var(--card-bg-color);
+	color: var(--text-color);
+	border: 1px solid var(--border-color);
+}
+
+.asyncapi button:hover {
+	background-color: var(--accent-color);
+	color: #000;
+}
+
+/* Highlight colors */
+.dark .asyncapi .badge,
+.dark .asyncapi .label {
+	background-color: var(--accent-color);
+	color: #000;
+}
