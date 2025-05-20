@@ -49,6 +49,10 @@
       "url": "https://github.com/blacklane/flights/blob/main/docs/swagger.yaml"
     },
     {
+      "name": "Fraud Prevention Service",
+      "url": "https://github.com/blacklane/fraud-prevention-service/blob/master/docs/fraud-prevention-service.json"
+    },
+    {
       "name": "Geoservice",
       "url": "https://github.com/blacklane/geoservice/blob/main/docs/swagger.yaml"
     },
@@ -68,7 +72,7 @@
       "name": "Mercury",
       "url": "https://github.com/blacklane/mercury/blob/master/docs/mercury.json"
     },
-{
+    {
       "name": "Poseidon",
       "url": "https://github.com/blacklane/elli/blob/master/docs/poseidon.json"
     },
