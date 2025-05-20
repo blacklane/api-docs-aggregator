@@ -14,7 +14,6 @@
     "@asyncapi/web-component": "^2.6.3",
     "@lucide/astro": "^0.511.0",
     "astro": "^5.7.13",
-    "lucide-react": "^0.511.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "swagger-ui-react": "^5.21.0"
