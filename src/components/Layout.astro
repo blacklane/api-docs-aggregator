@@ -1,5 +1,6 @@
 ---
 import { apis } from "../config/apis";
+import { events } from "../config/events";
 import ThemeToggle from "./ThemeToggle";
 import { Logo } from "./Logo";
 import Sidebar from "./Sidebar.astro";
@@ -7,9 +8,10 @@ import Sidebar from "./Sidebar.astro";
 interface Props {
 	title?: string;
 	selectedApiName?: string | null;
+	selectedEventName?: string | null;
 }
 
-const { title = "Welcome", selectedApiName = null } = Astro.props;
+const { title = "Welcome", selectedApiName = null, selectedEventName = null } = Astro.props;
 ---
 
 <div class="flex flex-col h-screen overflow-hidden bg-gray-100 dark:bg-zinc-900">
@@ -25,7 +27,7 @@ const { title = "Welcome", selectedApiName = null } = Astro.props;
 		</div>
 	</header>
 	<div class="flex h-screen overflow-hidden bg-gray-100 dark:bg-zinc-900">
-		<Sidebar apis={apis} selectedApiName={selectedApiName} />
+		<Sidebar apis={apis} selectedApiName={selectedApiName} events={events} selectedEventName={selectedEventName} />
 		<div class="flex-grow flex flex-col h-screen overflow-hidden">
 			<main class="flex-grow overflow-y-auto bg-white dark:bg-zinc-800 relative" >
 				<slot />

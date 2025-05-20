@@ -1,9 +1,18 @@
-import React from "react";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 
-function SwaggerUIComponent({ url, apiBaseUrl }) {
-	const requestInterceptor = (req) => {
+interface Request {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    [k: string]: any;
+}
+
+interface SwaggerUIComponentProps {
+	url: string;
+	apiBaseUrl: string;
+}
+
+function SwaggerUIComponent({ url, apiBaseUrl }: SwaggerUIComponentProps) {
+	const requestInterceptor = (req: Request) => {
 		if (req.url.startsWith("https://github.com")) {
 			// Transform GitHub URLs to raw.githubusercontent.com
 			const rawUrl = req.url.replace(
@@ -21,6 +30,7 @@ function SwaggerUIComponent({ url, apiBaseUrl }) {
 
 	return (
 		<div className="h-full overflow-hidden">
+			{/* @ts-expect-error - SwaggerUI has incorrect type definitions */}
 			<SwaggerUI
 				url={url}
 				docExpansion="none"

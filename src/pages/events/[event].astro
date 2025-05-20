@@ -1,37 +1,36 @@
 ---
 import '../../styles/global.css';
 import Layout from '../../components/Layout.astro';
-import ApiView from '../../components/ApiView.astro';
-import { apis } from "../../config/apis";
+import EventsView from '../../components/EventsView.astro';
+import { events } from "../../config/events";
 
-// Get the API name from the URL params
-const { api } = Astro.params;
+// Get the event name from the URL params
+const { event } = Astro.params;
 
-// Find the current API for the title and selected state
-const currentApi = apis.find(
-  (apiItem) => apiItem.name.toLowerCase() === (api?.toLowerCase() || "")
+// Find the current event for the title and selected state
+const currentEvent = events.find(
+  (eventItem) => eventItem.name.toLowerCase() === (event?.toLowerCase() || "")
 );
 
-// Generate static paths for all APIs
+// Generate static paths for all events
 export function getStaticPaths() {
-  return apis.map(api => ({
-    params: { api: api.name.toLowerCase() }
+  return events.map(event => ({
+    params: { event: event.name.toLowerCase() }
   }));
 }
 
-// If the API doesn't exist, redirect to the home page
-if (!currentApi && api) {
+// If the event doesn't exist, redirect to the not-found page
+if (!currentEvent && event) {
   return Astro.redirect('/not-found');
 }
 ---
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{api ? `${api} API - Blacklane API Aggregator` : 'Blacklane API Aggregator'}</title>
+		<title>{event ? `${event} Event - Blacklane Events Explorer` : 'Blacklane Events Explorer'}</title>
 		<script is:inline>
 			// On page load or when changing themes, best practice to avoid FOUC
 			if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -42,8 +41,8 @@ if (!currentApi && api) {
 		</script>
 	</head>
 	<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300">
-		<Layout title={currentApi ? currentApi.name : "API Not Found"} selectedApiName={currentApi?.name || null} selectedEventName={null}>
-			<ApiView apiName={api || ""} />
+		<Layout title={currentEvent ? currentEvent.name : "Event Not Found"} selectedEventName={currentEvent?.name || null}>
+			<EventsView eventName={event || ""} />
 		</Layout>
 	</body>
 </html> 
