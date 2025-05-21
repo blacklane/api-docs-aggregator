@@ -1,6 +1,10 @@
 {
   "apis": [
     {
+      "name": "Atlas",
+      "url": "https://github.com/blacklane/atlas/blob/master/docs/atlas.json"
+    },
+    {
       "name": "Athena",
       "url": "https://github.com/blacklane/athena/blob/master/docs/athena.json"
     },
