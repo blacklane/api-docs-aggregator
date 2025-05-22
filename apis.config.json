@@ -9,6 +9,10 @@
       "url": "https://github.com/blacklane/athena/blob/master/docs/athena.json"
     },
     {
+      "name": "Auctions",
+      "url": "https://github.com/blacklane/auctions/blob/main/docs/swagger.yaml"
+    },
+    {
       "name": "Booking Prices",
       "url": "https://github.com/blacklane/booking_prices/blob/main/docs/booking_prices.json"
     },
