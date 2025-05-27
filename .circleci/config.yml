@@ -27,7 +27,11 @@ jobs:
      - node/install-packages:
         cache-path: ~/project/node_modules
         override-ci-command: npm install
-     - run: npm run build
+     - run:
+        name: Build with search index
+        environment:
+            GITHUB_TOKEN: $GITHUB_TOKEN
+        command: npm run build
      - run:
          name: Invalidate CloudFront Cache
          command: aws cloudfront create-invalidation --distribution-id E3MNKGZ3ZPDW10 --paths "/*"
@@ -45,7 +49,11 @@ jobs:
      - node/install-packages:
          cache-path: ~/project/node_modules
          override-ci-command: npm install
-     - run: PUBLIC_SWAGGER_API_URL=$TESTING_PUBLIC_SWAGGER_API_URL npm run build
+     - run:
+        name: Build with search index
+        environment:
+            GITHUB_TOKEN: $GITHUB_TOKEN
+        command: PUBLIC_SWAGGER_API_URL=$TESTING_PUBLIC_SWAGGER_API_URL npm run build
      - run:
          name: Invalidate CloudFront Cache
          command: aws cloudfront create-invalidation --distribution-id E3H291NBKV3C0Z --paths "/*"
