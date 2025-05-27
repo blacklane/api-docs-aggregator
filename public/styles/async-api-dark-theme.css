@@ -3,49 +3,49 @@
 /* Dark theme override for AsyncAPI React Component v2.6.3 */
 
 .aui-root .bg-white {
-	background-color: #121212!important;
+	background-color: #121212 !important;
 }
 
 .aui-root .bg-gray-100 {
-	background-color: #1e1e1e!important;
+	background-color: #1e1e1e !important;
 }
 
 .aui-root p {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root h1 {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root h2 {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root h3 {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root h4 {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root h5 {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root h6 {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root strong {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root .text-gray-700 {
-	color: #e0e0e0!important;
+	color: #e0e0e0 !important;
 }
 
 .aui-root .bg-gray-200 {
-	background-color: #222222!important;
+	background-color: #222222 !important;
 }

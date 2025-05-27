@@ -1,89 +1,64 @@
 @import "tailwindcss";
+@plugin "daisyui";
+@plugin "tailwind-scrollbar";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-@layer base {
-  :root, :root.light {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 250 84% 54%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 250 84% 54%;
-    --radius: 0.75rem;
-
-    /* Sidebar specific variables */
-    --sidebar-background: 0 0% 95%;
-    --sidebar-foreground: 240 10% 3.9%;
-    --sidebar-primary: 250 84% 54%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 240 5.9% 90%;
-    --sidebar-ring: 250 84% 54%;
+@layer utilities {
+  .scrollbar-hide {
+    /* Firefox */
+    scrollbar-width: none;
+    /* IE/Edge */
+    -ms-overflow-style: none;
   }
 
-  .dark, :root.dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 252 94% 67%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 75%;
-    --accent: 250 95% 76%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 250 95% 76%;
-
-    /* Sidebar specific variables */
-    --sidebar-background: 225 45% 9%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 252 94% 67%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 250 95% 76%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 25%;
-    --sidebar-ring: 250 95% 76%;
+  .scrollbar-hide::-webkit-scrollbar {
+    /* Safari/Chrome */
+    display: none;
   }
 }
 
-html {
-  transition: background-color 0.3s ease, color 0.3s ease;
+@layer components {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-primary/10 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/20;
+  }
 }
 
-/* Apply transitions to more elements */
-*,
-*::before,
-*::after {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+html body[data-scroll-locked] {
+  --removed-body-scroll-bar-size: 0px !important;
+  margin-right: 0px !important;
+  overflow-y: auto !important;
 }
 
-/* Remove transition from certain elements to avoid flicker */
-svg *,
-img {
-  transition: none !important;
+/* Command Palette Styles */
+.cmdk-root {
+  @apply bg-base-100 text-base-content;
+}
+
+.cmdk-input {
+  @apply bg-transparent text-base-content placeholder:text-base-content/60;
+}
+
+.cmdk-list {
+  @apply scrollbar-thin;
+}
+
+.cmdk-item[data-selected="true"] {
+  @apply bg-base-200;
+}
+
+.cmdk-group-heading {
+  @apply text-base-content/60;
 }
 
 .swagger-ui {
@@ -97,127 +72,43 @@ img {
   transition: none !important;
 }
 
-/* Make sure Swagger UI responds to our dark mode */
-.dark .swagger-ui {
-  color-scheme: dark;
-  filter: invert(88%) hue-rotate(180deg);
+:root:has(input.theme-controller[value="light"]:checked),
+[data-theme="light"] {
+  /* Make sure Swagger UI responds to our dark mode */
+  .swagger-ui {
+    color-scheme: light;
+    filter: invert(0%) hue-rotate(0deg);
+  }
+
+  .swagger-ui .opblock-tag,
+  .swagger-ui .opblock .opblock-summary-operation-id,
+  .swagger-ui .opblock .opblock-summary-path,
+  .swagger-ui .opblock .opblock-summary-path__deprecated {
+    color: var(--foreground);
+  }
+
+  img,
+  .swagger-ui img {
+    filter: invert(0%) hue-rotate(0deg);
+  }
 }
 
-.dark .swagger-ui .opblock-tag,
-.dark .swagger-ui .opblock .opblock-summary-operation-id, 
-.dark .swagger-ui .opblock .opblock-summary-path,
-.dark .swagger-ui .opblock .opblock-summary-path__deprecated {
-  color: var(--foreground);
-}
+@media (prefers-color-scheme: dark) {
+  /* Make sure Swagger UI responds to our dark mode */
+  .swagger-ui {
+    color-scheme: dark;
+    filter: invert(88%) hue-rotate(180deg);
+  }
 
-.dark img, 
-.dark .swagger-ui img {
-  filter: invert(100%) hue-rotate(180deg);
-}
+  .swagger-ui .opblock-tag,
+  .swagger-ui .opblock .opblock-summary-operation-id,
+  .swagger-ui .opblock .opblock-summary-path,
+  .swagger-ui .opblock .opblock-summary-path__deprecated {
+    color: var(--foreground);
+  }
 
-
-/* Dark theme override for AsyncAPI React Component v2.6.3 */
-
-:root {
-	--bg-color: #121212;
-	--text-color: #e0e0e0;
-	--border-color: #333;
-	--card-bg-color: #1e1e1e;
-	--section-bg-color: #1a1a1a;
-	--accent-color: #bb86fc;
-	--link-color: #90caf9;
-	--scrollbar-thumb: #555;
-	--scrollbar-track: #222;
-}
-
-/* General background and text */
-.dark .asyncapi {
-	background-color: var(--bg-color);
-	color: var(--text-color);
-}
-
-.dark .asyncapi a {
-	color: var(--link-color);
-}
-
-.dark .asyncapi a:hover {
-	color: var(--accent-color);
-}
-
-/* Header */
-.dark .asyncapi .header {
-	background-color: var(--section-bg-color);
-	color: var(--text-color);
-	border-bottom: 1px solid var(--border-color);
-}
-
-/* Sidebar */
-.dark .asyncapi .sidebar {
-	background-color: var(--card-bg-color);
-	border-right: 1px solid var(--border-color);
-}
-
-/* Content panels */
-.dark .asyncapi .info,
-.dark .asyncapi .servers,
-.dark .asyncapi .operations,
-.dark .asyncapi .messages,
-.dark .asyncapi .schemas,
-.dark .asyncapi .tags {
-	background-color: var(--section-bg-color);
-	color: var(--text-color);
-}
-
-/* Cards and borders */
-.dark .asyncapi .panel,
-.dark .asyncapi .card,
-.dark .asyncapi .schema,
-.dark .asyncapi .operation,
-.asyncapi .message {
-	background-color: var(--card-bg-color);
-	border: 1px solid var(--border-color);
-	color: var(--text-color);
-}
-
-/* Tables */
-.dark .asyncapi table {
-	background-color: var(--card-bg-color);
-	color: var(--text-color);
-}
-
-.dark .asyncapi table th,
-.dark .asyncapi table td {
-	border-color: var(--border-color);
-}
-
-/* Scrollbars */
-.dark .asyncapi ::-webkit-scrollbar {
-	width: 10px;
-}
-
-.dark .asyncapi ::-webkit-scrollbar-track {
-	background: var(--scrollbar-track);
-}
-
-.dark .asyncapi ::-webkit-scrollbar-thumb {
-	background-color: var(--scrollbar-thumb);
-}
-
-/* Buttons and interactive elements */
-.dark .asyncapi button {
-	background-color: var(--card-bg-color);
-	color: var(--text-color);
-	border: 1px solid var(--border-color);
-}
-
-.asyncapi button:hover {
-	background-color: var(--accent-color);
-	color: #000;
-}
-
-/* Highlight colors */
-.dark .asyncapi .badge,
-.dark .asyncapi .label {
-	background-color: var(--accent-color);
-	color: #000;
+  img,
+  .swagger-ui img {
+    filter: invert(100%) hue-rotate(180deg);
+  }
 }

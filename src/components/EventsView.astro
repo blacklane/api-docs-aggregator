@@ -29,11 +29,11 @@ asyncApiUrl = `${API_BASE_URL}?url=${encodeURIComponent(asyncApiUrl)}`;
 ---
 
 {!currentEvent ? (
-    <div class="flex justify-center items-center h-full text-gray-500 dark:text-zinc-400 text-lg bg-gray-50 dark:bg-zinc-900">
+    <div class="flex justify-center items-center h-full text-base-content/70 text-lg bg-base-100">
         Event not found
     </div>
 ) : (
-    <div class="absolute inset-0">
+    <div class="relative">
        <asyncapi-component
         id="asyncapi-viewer"
         schemaUrl={asyncApiUrl}
@@ -44,27 +44,124 @@ asyncApiUrl = `${API_BASE_URL}?url=${encodeURIComponent(asyncApiUrl)}`;
     </div>
     <script src="https://unpkg.com/@asyncapi/web-component@latest/lib/asyncapi-web-component.js" defer></script>
     <script>
-      function updateAsyncApiTheme() {
-        var asyncapi = document.getElementById('asyncapi-viewer');
-        if (!asyncapi) return;
-        var isDark = document.documentElement.classList.contains('dark');
-        asyncapi.setAttribute('cssImportPath', isDark
-          ? '/styles/async-api-dark-theme.css'
-          : 'https://unpkg.com/@asyncapi/react-component@latest/styles/default.min.css');
-      }
-      
+      /**
+      * @description Initialize the AsyncAPI theme based on the current theme controller state
+      **/
       document.addEventListener('DOMContentLoaded', function() {
-        updateAsyncApiTheme();
-        // Watch for changes to the html class attribute
-        var observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.attributeName === 'class') {
-              updateAsyncApiTheme();
+        initializeAsyncApiTheme();
+      });
+      
+      // Also try to initialize immediately if DOM is already loaded
+      if (document.readyState !== 'loading') {
+        initializeAsyncApiTheme();
+      }
+
+      function updateAsyncApiTheme(isDark:boolean):any {
+        var asyncapi = document.getElementById('asyncapi-viewer');
+        if (asyncapi) {
+          var cssPath = isDark
+            ? '/styles/async-api-dark-theme.css'
+            : 'https://unpkg.com/@asyncapi/react-component@latest/styles/default.min.css';
+          
+          // Set the attribute immediately
+          asyncapi.setAttribute('cssImportPath', cssPath);
+          
+          // Also try again after a short delay to ensure it takes effect
+          setTimeout(function() {
+            if (asyncapi) {
+              asyncapi.setAttribute('cssImportPath', cssPath);
             }
+          }, 50);
+        }
+      }
+
+      function getCurrentTheme():boolean {
+        // Check if light theme is selected
+        var lightThemeController = document.querySelector('input.theme-controller[value="light"]') as HTMLInputElement;
+        if (lightThemeController && lightThemeController.checked) {
+          return false; // Light theme
+        }
+        
+        // Check if dark theme is selected
+        var darkThemeController = document.querySelector('input.theme-controller[value="dark"]') as HTMLInputElement;
+        if (darkThemeController && darkThemeController.checked) {
+          return true; // Dark theme
+        }
+        
+        // Fallback to system preference
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      function initializeAsyncApiTheme() {
+        var asyncapi = document.getElementById('asyncapi-viewer');
+        if (asyncapi) {
+          var isDark = getCurrentTheme();
+          var cssPath = isDark
+            ? '/styles/async-api-dark-theme.css'
+            : 'https://unpkg.com/@asyncapi/react-component@latest/styles/default.min.css';
+          
+          // Set the initial attribute
+          asyncapi.setAttribute('cssImportPath', cssPath);
+          
+          // Also wait for the component to be fully loaded and try again
+          setTimeout(function() {
+            if (asyncapi) {
+              asyncapi.setAttribute('cssImportPath', cssPath);
+            }
+          }, 100);
+          
+          // Use a more robust approach with MutationObserver to detect when the component is ready
+          var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+              if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                // Component has been rendered, apply theme again
+                if (asyncapi) {
+                  asyncapi.setAttribute('cssImportPath', cssPath);
+                }
+              }
+            });
+          });
+          
+          // Observe changes to the asyncapi component
+          if (asyncapi) {
+            observer.observe(asyncapi, { childList: true, subtree: true });
+          }
+          
+          // Stop observing after 5 seconds to prevent memory leaks
+          setTimeout(function() {
+            observer.disconnect();
+          }, 5000);
+        }
+      }
+
+      // Watch for theme controller changes
+      function watchThemeControllers() {
+        var themeControllers = document.querySelectorAll('input.theme-controller');
+        themeControllers.forEach(function(controller) {
+          controller.addEventListener('change', function() {
+            updateAsyncApiTheme(getCurrentTheme());
           });
         });
-        observer.observe(document.documentElement, { attributes: true });
-      });
+      }
+
+      // Initialize theme watchers when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', watchThemeControllers);
+      } else {
+        watchThemeControllers();
+      }
+
+      // Also keep system preference fallback
+      if(window.matchMedia){
+        var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        colorSchemeQuery.addEventListener('change', function(ev:MediaQueryListEvent) {
+          // Only update if no theme controller is explicitly selected
+          var hasExplicitTheme = document.querySelector('input.theme-controller:checked');
+          if (!hasExplicitTheme) {
+            updateAsyncApiTheme(ev.matches);
+          }
+        });
+      }
     </script>
 )}
 

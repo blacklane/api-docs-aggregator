@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+import Sidebar from "../components/Sidebar.astro";
+import { apis } from "../config/apis";
+import { events } from "../config/events";
+import Header from "./Header.astro";
+import GlobalCommandPalette from "../components/GlobalCommandPalette";
+
+interface Props {
+  title?: string;
+  selectedApiName?: string | null;
+  selectedEventName?: string | null;
+}
+
+const {
+  title = "Welcome",
+  selectedApiName = null,
+  selectedEventName = null,
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="drawer lg:drawer-open">
+      <input id="left-sidebar-drawer" type="checkbox" class="drawer-toggle" />
+      <Sidebar
+        apis={apis}
+        selectedApiName={selectedApiName}
+        events={events}
+        selectedEventName={selectedEventName}
+      />
+      <div class="drawer-content flex flex-col">
+        <Header title={title}/>
+        <main class="flex-1 pt-4 px-6 relative bg-base-300">
+          <slot />
+          <div class="h-16"></div>
+        </main>
+      </div>
+    </div>
+    
+    <!-- Global Command Palette -->
+    <GlobalCommandPalette apis={apis} events={events} client:load />
+  </body>
+</html>
+

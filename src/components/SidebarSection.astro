@@ -1,7 +1,4 @@
 ---
-// SidebarSection.astro
-// Removed AstroComponentFactory import due to linter error
-
 interface Item {
   name: string;
 }
@@ -9,10 +6,7 @@ interface Item {
 interface Props {
   items: Item[];
   sectionTitle: string;
-  listId: string;
-  getColor: (name: string) => string;
   getInitials?: (name: string) => string;
-  getIndicatorColors?: (color: string) => { indicator: string, gradient: string };
   selectedName?: string | null;
   linkPrefix: string;
   emptyText?: string;
@@ -21,60 +15,150 @@ interface Props {
 const {
   items,
   sectionTitle,
-  listId,
-  getColor,
-  getIndicatorColors,
   selectedName,
   linkPrefix,
-  emptyText = 'No items.',
+  emptyText = "No items.",
 } = Astro.props;
+
+// Function to get a deterministic color based on name
+function getColor(name: string): string {
+  // Array of tailwind color classes
+  const colors = [
+    "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300",
+    "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
+    "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300",
+    "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300",
+    "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300",
+    "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300",
+    "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300",
+    "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300",
+    "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
+    "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300",
+  ];
+
+  // Use a hash of the name to pick a color deterministically
+  const hash = name
+    .split("")
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return colors[hash % colors.length];
+}
+
+// Function to get indicator and gradient colors based on API color
+function getIndicatorColors(apiColor: string): {
+  indicator: string;
+  gradient: string;
+} {
+  const colorMap: Record<string, { indicator: string; gradient: string }> = {
+    "bg-red-100": {
+      indicator: "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]",
+      gradient: "from-red-50 dark:from-red-900/20",
+    },
+    "bg-blue-100": {
+      indicator: "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.4)]",
+      gradient: "from-blue-50 dark:from-blue-900/20",
+    },
+    "bg-green-100": {
+      indicator: "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]",
+      gradient: "from-green-50 dark:from-green-900/20",
+    },
+    "bg-yellow-100": {
+      indicator: "bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.4)]",
+      gradient: "from-yellow-50 dark:from-yellow-900/20",
+    },
+    "bg-indigo-100": {
+      indicator: "bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.4)]",
+      gradient: "from-indigo-50 dark:from-indigo-900/20",
+    },
+    "bg-pink-100": {
+      indicator: "bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.4)]",
+      gradient: "from-pink-50 dark:from-pink-900/20",
+    },
+    "bg-purple-100": {
+      indicator: "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.4)]",
+      gradient: "from-purple-50 dark:from-purple-900/20",
+    },
+    "bg-teal-100": {
+      indicator: "bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.4)]",
+      gradient: "from-teal-50 dark:from-teal-900/20",
+    },
+    "bg-orange-100": {
+      indicator: "bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]",
+      gradient: "from-orange-50 dark:from-orange-900/20",
+    },
+    "bg-cyan-100": {
+      indicator: "bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.4)]",
+      gradient: "from-cyan-50 dark:from-cyan-900/20",
+    },
+  };
+
+  const baseColor = apiColor.split(" ")[0];
+  return (
+    colorMap[baseColor] || {
+      indicator: "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.4)]",
+      gradient: "from-purple-50 dark:from-purple-900/20",
+    }
+  );
+}
 ---
-<section class="mb-4">
-  <h2 class="sidebar-section-title flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-zinc-400 bg-gray-50 dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-700">
-    <slot name="icon" />
-    {sectionTitle}
-  </h2>
-  {items.length > 0 ? (
-    <ul id={listId} class="list-none p-0 m-0 relative divide-y divide-gray-100 dark:divide-zinc-700 bg-white dark:bg-zinc-800">
-      {items.map((item: Item) => {
-        const color = getColor(item.name);
-        const bg = color.split(' ')[0];
-        const text = color.split(' ')[1];
-        const indicatorColors = getIndicatorColors ? getIndicatorColors(color) : null;
-        const isSelected = selectedName && selectedName === item.name;
-        return (
-          <li class={isSelected ? 'relative group' : ''} data-name={item.name}>
-            {isSelected && indicatorColors && (
-              <div 
-                id="api-indicator"
-                class={`absolute left-0 w-1 rounded-r transition-all duration-300 ease-in-out z-0 ${indicatorColors.indicator}`} 
-                style="opacity: 0;"
-              />
-            )}
-            <a
-              href={`/${linkPrefix}/${item.name.toLowerCase()}`}
-              data-url={item.name}
-              data-color={bg}
-              class={`block w-full text-left py-3 px-4 border-l-4 text-sm transition-all duration-300 ease-in-out focus:outline-none relative overflow-hidden group cursor-pointer
-                ${isSelected
-                  ? 'border-l-transparent bg-zinc-200 text-zinc-900 font-medium dark:bg-zinc-700 dark:text-zinc-100 translate-x-0.5 api-selected'
-                  : 'border-l-transparent text-gray-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-400 dark:hover:text-zinc-900'}`}
-            >
-              <div class="flex justify-center md:justify-start items-center gap-2">
-                <span class={`inline-flex items-center justify-center h-6 w-6 rounded-full ${bg} ${text} mr-2`}>
-                  <slot name="icon" />
-                </span>
-                <span class={`inline-flex items-center relative z-10 transition-transform duration-300 ${isSelected ? 'translate-x-1' : ''}`}>{item.name}</span>
-              </div>
-              {isSelected && indicatorColors && (
-                <span class={`absolute inset-0 bg-gradient-to-r ${indicatorColors.gradient} to-transparent transition-all duration-500 opacity-100`} />
-              )}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-  ) : (
-    <p class="text-gray-500 dark:text-zinc-400 p-2 text-center md:text-sm">{emptyText}</p>
-  )}
-</section> 
+
+<li>
+  <details open>
+    <summary
+      class="flex items-center uppercase font-semibold text-base-content/70 h-10 sticky top-15 z-20 bg-base-100"
+    >
+      <slot name="icon" />
+      {sectionTitle}
+    </summary>
+    {
+      items.length > 0 ? (
+        <ul class="menu bg-base-100 rounded-none w-full">
+          {items
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((item: any) => {
+              const color = getColor(item.name);
+              const bg = color.split(" ")[0];
+              const indicatorColors = getIndicatorColors
+                ? getIndicatorColors(color)
+                : null;
+              const isSelected = selectedName && selectedName === item.name;
+
+              // Otherwise, render as a normal menu item
+              return (
+                <li
+                  class={`menu-item w-full ${isSelected ? "active relative group" : ""}`}
+                  data-name={item.name.toLowerCase()}
+                >
+                  <a
+                    href={`/${linkPrefix}/${item.name.toLowerCase()}`}
+                    data-url={item.name}
+                    data-color={bg}
+                    class={`flex items-center gap-2  px-4 py-2 rounded transition-all duration-300 focus:outline-none relative group cursor-pointer
+                ${
+                  isSelected
+                    ? "bg-base-200 text-base-content font-medium api-selected"
+                    : "text-base-content/70 hover:bg-base-200 hover:text-base-content"
+                }`}
+                  >
+                    <span
+                      class={`inline-flex items-center relative z-10 transition-transform duration-300 ${isSelected ? "translate-x-1" : ""}`}
+                    >
+                      {item.name}
+                    </span>
+                    {isSelected && indicatorColors && (
+                      <span
+                        class={`absolute inset-0 bg-gradient-to-r ${indicatorColors.gradient} to-transparent transition-all duration-500 opacity-100 pointer-events-none`}
+                      />
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+        </ul>
+      ) : (
+        <p class="text-base-content/70 p-2 text-center md:text-sm">
+          {emptyText}
+        </p>
+      )
+    }
+  </details>
+</li>
