@@ -81,6 +81,42 @@ Example:
 
 The new API will automatically appear in the sidebar menu.
 
+## Adding New Event Specifications
+
+To add a new event specification to the aggregator:
+
+1. Open the root-level file `events.config.json`
+2. Add a new entry to the `events` array following this format:
+
+```json
+{
+  "name": "Event Name",  // The display name for the event
+  "url": "https://github.com/blacklane/path/to/your/events.yaml"  // URL to the AsyncAPI YAML or JSON
+}
+```
+
+Example:
+
+```json
+{
+  "events": [
+    {
+      "name": "Booking Service",
+      "url": "https://github.com/blacklane/bookings-service/blob/402c2fbe05a0c3078afa9023c1046dc7d8d2c2e7/docs/events.yaml"
+    },
+    // Add your new event here
+    {
+      "name": "New Event Service",
+      "url": "https://github.com/blacklane/new-service/blob/main/docs/events.yaml"
+    }
+  ]
+}
+```
+
+3. Save the file and restart the development server if needed
+
+**Note:** Events use AsyncAPI specification format (not OpenAPI/Swagger) and are displayed using the AsyncAPI React component. The new event will automatically appear in the sidebar menu under the "Events" section.
+
 ## Building for Production
 
 ```bash
