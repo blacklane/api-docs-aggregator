@@ -1,0 +1,761 @@
+{
+  "apis": [
+    {
+      "name": "Atlas",
+      "url": "https://github.com/blacklane/atlas/blob/master/docs/atlas.json",
+      "description": "Address lookup service",
+      "keywords": [
+        "atlas",
+        "deployed-with-webhook",
+        "pricing-geo",
+        "ruby",
+        "address",
+        "lookup",
+        "service"
+      ],
+      "repository": "blacklane/atlas",
+      "language": "Ruby",
+      "topics": [
+        "deployed-with-webhook",
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "Athena",
+      "url": "https://github.com/blacklane/athena/blob/master/docs/athena.json",
+      "description": "API gateway",
+      "keywords": [
+        "athena",
+        "sre",
+        "ruby",
+        "gateway"
+      ],
+      "repository": "blacklane/athena",
+      "language": "Ruby",
+      "topics": [
+        "sre"
+      ]
+    },
+    {
+      "name": "Auctions",
+      "url": "https://github.com/blacklane/auctions/blob/main/docs/swagger.yaml",
+      "description": "Reverse Dutch Auctioning and Dynamic Auctions",
+      "keywords": [
+        "auctions",
+        "pod-dispatching",
+        "go",
+        "reverse",
+        "dutch",
+        "auctioning",
+        "dynamic"
+      ],
+      "repository": "blacklane/auctions",
+      "language": "Go",
+      "topics": [
+        "pod-dispatching"
+      ]
+    },
+    {
+      "name": "Booking Prices",
+      "url": "https://github.com/blacklane/booking_prices/blob/main/docs/booking_prices.json",
+      "description": "Store for all booking associated prices (Customer, LSP, Partner and more)",
+      "keywords": [
+        "booking",
+        "prices",
+        "booking prices",
+        "pricing-geo",
+        "ruby",
+        "store",
+        "associated",
+        "customer"
+      ],
+      "repository": "blacklane/booking_prices",
+      "language": "Ruby",
+      "topics": [
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "Bookings Service",
+      "url": "https://github.com/blacklane/bookings-service/blob/master/docs/openapi.yaml",
+      "description": "Service responsible to aggregate all the passengers' bookings information.",
+      "keywords": [
+        "bookings",
+        "service",
+        "bookings service",
+        "middleware",
+        "nodejs",
+        "typescript",
+        "responsible",
+        "aggregate",
+        "passengers"
+      ],
+      "repository": "blacklane/bookings-service",
+      "language": "TypeScript",
+      "topics": [
+        "middleware",
+        "nodejs"
+      ]
+    },
+    {
+      "name": "Chauffeur Management Api",
+      "url": "https://github.com/blacklane/chauffeur-management-api/blob/main/docs/swagger.yaml",
+      "description": "API to manage chauffeurs",
+      "keywords": [
+        "chauffeur",
+        "management",
+        "api",
+        "chauffeur management api",
+        "it-tools",
+        "terraform",
+        "go",
+        "manage",
+        "chauffeurs"
+      ],
+      "repository": "blacklane/chauffeur-management-api",
+      "language": "Go",
+      "topics": [
+        "it-tools",
+        "terraform"
+      ]
+    },
+    {
+      "name": "Chat Service",
+      "url": "https://github.com/blacklane/chat-service/blob/main/docs/swagger.yaml",
+      "description": "chat-service is a backend API which is responsible for managing chat conversations.",
+      "keywords": [
+        "chat",
+        "service",
+        "chat service",
+        "guest-ride-experience",
+        "twilio",
+        "go",
+        "backend",
+        "which",
+        "responsible"
+      ],
+      "repository": "blacklane/chat-service",
+      "language": "Go",
+      "topics": [
+        "chat",
+        "guest-ride-experience",
+        "twilio"
+      ]
+    },
+    {
+      "name": "Complimentary Gateway",
+      "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_gateway.json",
+      "description": "Complimentary Manager service",
+      "keywords": [
+        "complimentary",
+        "gateway",
+        "complimentary gateway",
+        "partner-integrations",
+        "valkiria",
+        "go",
+        "manager",
+        "service"
+      ],
+      "repository": "blacklane/complimentary-manager",
+      "language": "Go",
+      "topics": [
+        "partner-integrations",
+        "valkiria"
+      ]
+    },
+    {
+      "name": "Complimentary Manager",
+      "url": "https://github.com/blacklane/complimentary-manager/blob/main/docs/complimentary_manager.json",
+      "description": "Complimentary Manager service",
+      "keywords": [
+        "complimentary",
+        "manager",
+        "complimentary manager",
+        "partner-integrations",
+        "valkiria",
+        "go",
+        "service"
+      ],
+      "repository": "blacklane/complimentary-manager",
+      "language": "Go",
+      "topics": [
+        "partner-integrations",
+        "valkiria"
+      ]
+    },
+    {
+      "name": "Elli Internal",
+      "url": "https://github.com/blacklane/elli/blob/master/docs/internal.json",
+      "description": "Elli — The good old Rails stack …",
+      "keywords": [
+        "elli",
+        "internal",
+        "elli internal",
+        "chauffeur-partner-engagement",
+        "chauffeur-ride-experience",
+        "dispatching",
+        "guest-booking-experience",
+        "guest-ride-experience",
+        "pricing",
+        "ruby",
+        "good",
+        "rails",
+        "stack"
+      ],
+      "repository": "blacklane/elli",
+      "language": "Ruby",
+      "topics": [
+        "chauffeur-partner-engagement",
+        "chauffeur-ride-experience",
+        "dispatching",
+        "guest-booking-experience",
+        "guest-ride-experience",
+        "pricing"
+      ]
+    },
+    {
+      "name": "Elli User Service",
+      "url": "https://github.com/blacklane/elli-user-service/blob/main/docs/swagger.yaml",
+      "description": "Elli user connector for keycloak transition plan",
+      "keywords": [
+        "elli",
+        "user",
+        "service",
+        "elli user service",
+        "api",
+        "go",
+        "connector",
+        "keycloak",
+        "transition"
+      ],
+      "repository": "blacklane/elli-user-service",
+      "language": "Go",
+      "topics": []
+    },
+    {
+      "name": "Emirates",
+      "url": "https://github.com/blacklane/emirates/blob/master/doc/emirates.json",
+      "description": "Service for external integration with Emirates Airlines",
+      "keywords": [
+        "emirates",
+        "partner-integrations",
+        "valkiria",
+        "ruby",
+        "service",
+        "external",
+        "integration",
+        "airlines"
+      ],
+      "repository": "blacklane/emirates",
+      "language": "Ruby",
+      "topics": [
+        "partner-integrations",
+        "valkiria"
+      ]
+    },
+    {
+      "name": "Flights Service",
+      "url": "https://github.com/blacklane/flights/blob/main/docs/swagger.yaml",
+      "description": "Flights monitor, lookup and updates the flight informations.",
+      "keywords": [
+        "flights",
+        "service",
+        "flights service",
+        "go",
+        "middleware",
+        "monitor",
+        "lookup",
+        "updates",
+        "flight"
+      ],
+      "repository": "blacklane/flights",
+      "language": "Go",
+      "topics": [
+        "go",
+        "middleware"
+      ]
+    },
+    {
+      "name": "Fraud Prevention Service",
+      "url": "https://github.com/blacklane/fraud-prevention-service/blob/master/docs/fraud-prevention-service.json",
+      "description": "Fraud Prevention Service API Documentation",
+      "keywords": [
+        "fraud",
+        "prevention",
+        "service",
+        "fraud prevention service",
+        "payments-billing",
+        "go"
+      ],
+      "repository": "blacklane/fraud-prevention-service",
+      "language": "Go",
+      "topics": [
+        "payments-billing"
+      ]
+    },
+    {
+      "name": "Geoservice",
+      "url": "https://github.com/blacklane/geoservice/blob/main/docs/swagger.yaml",
+      "description": "Replaces Atlas serving the /locations and /directions endpoints",
+      "keywords": [
+        "geoservice",
+        "directions",
+        "estimation",
+        "geolocation",
+        "geospatial",
+        "hotspots",
+        "locations",
+        "go",
+        "replaces",
+        "atlas",
+        "serving"
+      ],
+      "repository": "blacklane/geoservice",
+      "language": "Go",
+      "topics": [
+        "directions",
+        "estimation",
+        "geolocation",
+        "geospatial",
+        "hotspots",
+        "locations"
+      ]
+    },
+    {
+      "name": "Guest Prices",
+      "url": "https://github.com/blacklane/guest_prices/blob/master/docs/guest_prices.json",
+      "description": "New service to calculate guest prices",
+      "keywords": [
+        "guest",
+        "prices",
+        "guest prices",
+        "pricing",
+        "pricing-geo",
+        "ruby",
+        "service",
+        "calculate"
+      ],
+      "repository": "blacklane/guest_prices",
+      "language": "Ruby",
+      "topics": [
+        "pricing",
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "Lethe",
+      "url": "https://github.com/blacklane/lethe/blob/master/docs/lethe.json",
+      "description": "The missing tokenizer",
+      "keywords": [
+        "lethe",
+        "aws-lambda",
+        "charlie",
+        "deployed-with-webhook",
+        "nodejs",
+        "payment-and-billing",
+        "javascript",
+        "missing",
+        "tokenizer"
+      ],
+      "repository": "blacklane/lethe",
+      "language": "JavaScript",
+      "topics": [
+        "aws-lambda",
+        "charlie",
+        "deployed-with-webhook",
+        "nodejs",
+        "payment-and-billing"
+      ]
+    },
+    {
+      "name": "Live Activity Service",
+      "url": "https://github.com/blacklane/live-activity-service/blob/main/openapi/swagger.yaml",
+      "description": "Provides Live Data to Live Activities in mobile apps",
+      "keywords": [
+        "live",
+        "activity",
+        "service",
+        "live activity service",
+        "guest-ride-experience",
+        "go",
+        "provides",
+        "data",
+        "activities"
+      ],
+      "repository": "blacklane/live-activity-service",
+      "language": "Go",
+      "topics": [
+        "guest-ride-experience"
+      ]
+    },
+    {
+      "name": "Mercury",
+      "url": "https://github.com/blacklane/mercury/blob/master/docs/mercury.json",
+      "description": "PSP agnostic payment gateway",
+      "keywords": [
+        "mercury",
+        "charlie",
+        "deployed-with-webhook",
+        "ruby",
+        "agnostic",
+        "payment",
+        "gateway"
+      ],
+      "repository": "blacklane/mercury",
+      "language": "Ruby",
+      "topics": [
+        "charlie",
+        "deployed-with-webhook"
+      ]
+    },
+    {
+      "name": "Poseidon",
+      "url": "https://github.com/blacklane/elli/blob/master/docs/poseidon.json",
+      "description": "Elli — The good old Rails stack …",
+      "keywords": [
+        "poseidon",
+        "chauffeur-partner-engagement",
+        "chauffeur-ride-experience",
+        "dispatching",
+        "guest-booking-experience",
+        "guest-ride-experience",
+        "pricing",
+        "ruby",
+        "elli",
+        "good",
+        "rails",
+        "stack"
+      ],
+      "repository": "blacklane/elli",
+      "language": "Ruby",
+      "topics": [
+        "chauffeur-partner-engagement",
+        "chauffeur-ride-experience",
+        "dispatching",
+        "guest-booking-experience",
+        "guest-ride-experience",
+        "pricing"
+      ]
+    },
+    {
+      "name": "Pricing Bff",
+      "url": "https://github.com/blacklane/pricing-bff/blob/main/docs/swagger.yaml",
+      "description": "Pricing Bff API Documentation",
+      "keywords": [
+        "pricing",
+        "bff",
+        "pricing bff",
+        "api",
+        "service",
+        "go"
+      ],
+      "repository": "blacklane/pricing-bff",
+      "language": "Go",
+      "topics": []
+    },
+    {
+      "name": "Pricing Complimentary",
+      "url": "https://github.com/blacklane/pricing_complimentary/blob/main/docs/pricing_complimentary.json",
+      "description": "Complimentary discount price component calculator",
+      "keywords": [
+        "pricing",
+        "complimentary",
+        "pricing complimentary",
+        "pricing-geo",
+        "ruby",
+        "discount",
+        "price",
+        "component",
+        "calculator"
+      ],
+      "repository": "blacklane/pricing_complimentary",
+      "language": "Ruby",
+      "topics": [
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "Pricing Composer",
+      "url": "https://github.com/blacklane/pricing_composer/blob/master/docs/pricing_composer.json",
+      "description": "Pricing Composer service that is responsible of composing the final price for either guest or chauffeur.",
+      "keywords": [
+        "pricing",
+        "composer",
+        "pricing composer",
+        "pricing-geo",
+        "ruby",
+        "service",
+        "responsible",
+        "composing"
+      ],
+      "repository": "blacklane/pricing_composer",
+      "language": "Ruby",
+      "topics": [
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "Pricing Insurance",
+      "url": "https://github.com/blacklane/pricing_insurance/blob/main/docs/pricing_insurance.json",
+      "description": "Insurance price component",
+      "keywords": [
+        "pricing",
+        "insurance",
+        "pricing insurance",
+        "pricing-geo",
+        "ruby",
+        "price",
+        "component"
+      ],
+      "repository": "blacklane/pricing_insurance",
+      "language": "Ruby",
+      "topics": [
+        "pricing",
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "Pricing Multiplier",
+      "url": "https://github.com/blacklane/pricing_multiplier/blob/main/docs/pricing_multiplier.json",
+      "description": "Pricing Multiplier calculates the multiplier componet",
+      "keywords": [
+        "pricing",
+        "multiplier",
+        "pricing multiplier",
+        "pricing-geo",
+        "ruby",
+        "calculates",
+        "componet"
+      ],
+      "repository": "blacklane/pricing_multiplier",
+      "language": "Ruby",
+      "topics": [
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "Push Notifications",
+      "url": "https://github.com/blacklane/push-notifications/blob/main/docs/swagger.yaml",
+      "description": "Push notifications service for both iOS and Android apps",
+      "keywords": [
+        "push",
+        "notifications",
+        "push notifications",
+        "go",
+        "guest-ride-experience",
+        "service",
+        "both",
+        "android"
+      ],
+      "repository": "blacklane/push-notifications",
+      "language": "Go",
+      "topics": [
+        "go",
+        "guest-ride-experience"
+      ]
+    },
+    {
+      "name": "Ride Bundler",
+      "url": "https://github.com/blacklane/ride-bundler/blob/main/docs/ride_bundler.json",
+      "description": "The ride-bundler service identifies rides that should be sold as a bundle instead of as single rides",
+      "keywords": [
+        "ride",
+        "bundler",
+        "ride bundler",
+        "pod-dispatching",
+        "go",
+        "service",
+        "identifies",
+        "rides"
+      ],
+      "repository": "blacklane/ride-bundler",
+      "language": "Go",
+      "topics": [
+        "pod-dispatching"
+      ]
+    },
+    {
+      "name": "Rendering Service",
+      "url": "https://github.com/blacklane/rendering-service/blob/master/docs/rendering-service.yaml",
+      "description": "PDF/HTML service base on html templates to create HTML/PDF outputs depending on json input.",
+      "keywords": [
+        "rendering",
+        "service",
+        "rendering service",
+        "csv",
+        "file-generator",
+        "pdf",
+        "rendering-service",
+        "go",
+        "html",
+        "base",
+        "templates"
+      ],
+      "repository": "blacklane/rendering-service",
+      "language": "Go",
+      "topics": [
+        "csv",
+        "file-generator",
+        "pdf",
+        "rendering-service"
+      ]
+    },
+    {
+      "name": "Reference Code Validator",
+      "url": "https://github.com/blacklane/reference-code-validator/blob/main/docs/swagger.yaml",
+      "description": "Validator of reference codes for corporations. Initially only required for BCG",
+      "keywords": [
+        "reference",
+        "code",
+        "validator",
+        "reference code validator",
+        "api",
+        "service",
+        "go",
+        "codes",
+        "corporations",
+        "initially"
+      ],
+      "repository": "blacklane/reference-code-validator",
+      "language": "Go",
+      "topics": []
+    },
+    {
+      "name": "Service Catalog",
+      "url": "https://github.com/blacklane/service-catalog/blob/main/docs/swagger.yaml",
+      "description": "Service Catalog API Documentation",
+      "keywords": [
+        "service",
+        "catalog",
+        "service catalog",
+        "api",
+        "go"
+      ],
+      "repository": "blacklane/service-catalog",
+      "language": "Go",
+      "topics": []
+    },
+    {
+      "name": "Shopping Cart",
+      "url": "https://github.com/blacklane/shopping-cart/blob/main/docs/swagger.yaml",
+      "description": "The service for the blacklane bookings",
+      "keywords": [
+        "shopping",
+        "cart",
+        "shopping cart",
+        "api",
+        "service",
+        "go",
+        "blacklane",
+        "bookings"
+      ],
+      "repository": "blacklane/shopping-cart",
+      "language": "Go",
+      "topics": []
+    },
+    {
+      "name": "Supply Prices",
+      "url": "https://github.com/blacklane/supply_prices/blob/master/docs/supply_prices.json",
+      "description": "New service to calculate supply prices",
+      "keywords": [
+        "supply",
+        "prices",
+        "supply prices",
+        "pricing",
+        "pricing-geo",
+        "ruby",
+        "service",
+        "calculate"
+      ],
+      "repository": "blacklane/supply_prices",
+      "language": "Ruby",
+      "topics": [
+        "pricing",
+        "pricing-geo"
+      ]
+    },
+    {
+      "name": "User Profiles",
+      "url": "https://github.com/blacklane/user-profiles/blob/main/docs/swagger.yaml",
+      "description": "Service to manage BL user personal information",
+      "keywords": [
+        "user",
+        "profiles",
+        "user profiles",
+        "api",
+        "service",
+        "go",
+        "manage",
+        "personal",
+        "information"
+      ],
+      "repository": "blacklane/user-profiles",
+      "language": "Go",
+      "topics": []
+    },
+    {
+      "name": "Users Activity",
+      "url": "https://github.com/blacklane/users-activity/blob/main/docs/swagger.yaml",
+      "description": "Blacklane users activity records",
+      "keywords": [
+        "users",
+        "activity",
+        "users activity",
+        "guest-ride-experience",
+        "go",
+        "blacklane",
+        "records"
+      ],
+      "repository": "blacklane/users-activity",
+      "language": "Go",
+      "topics": [
+        "guest-ride-experience"
+      ]
+    },
+    {
+      "name": "Wallet Service",
+      "url": "https://github.com/blacklane/wallet-service/blob/main/docs/swag/swagger.yaml",
+      "description": "Service to serve all requests related to the voucher wallet.",
+      "keywords": [
+        "wallet",
+        "service",
+        "wallet service",
+        "api",
+        "go",
+        "serve",
+        "requests",
+        "related",
+        "voucher"
+      ],
+      "repository": "blacklane/wallet-service",
+      "language": "Go",
+      "topics": []
+    }
+  ],
+  "events": [
+    {
+      "name": "Booking Service",
+      "url": "https://github.com/blacklane/bookings-service/blob/402c2fbe05a0c3078afa9023c1046dc7d8d2c2e7/docs/events.yaml",
+      "description": "Service responsible to aggregate all the passengers' bookings information.",
+      "keywords": [
+        "booking",
+        "service",
+        "booking service",
+        "middleware",
+        "nodejs",
+        "typescript",
+        "responsible",
+        "aggregate",
+        "passengers",
+        "bookings"
+      ],
+      "repository": "blacklane/bookings-service",
+      "language": "TypeScript",
+      "topics": [
+        "middleware",
+        "nodejs"
+      ]
+    }
+  ],
+  "lastUpdated": "2025-05-27T11:17:34.678Z"
+}

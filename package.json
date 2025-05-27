@@ -3,8 +3,10 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
+		"dev": "npm run build:search-index:dev && astro dev",
+		"build": "npm run build:search-index && astro build",
+		"build:search-index": "node scripts/build-search-index.js",
+		"build:search-index:dev": "node scripts/build-search-index.js",
 		"preview": "astro preview",
 		"astro": "astro"
 	},

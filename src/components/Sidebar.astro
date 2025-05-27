@@ -21,10 +21,16 @@ const { apis, selectedApiName, events, selectedEventName } = Astro.props;
   <ul class="menu max-w-80 bg-base-100 rounded-none p-0">
     <li class="h-16 px-4 py-4 bg-base-100 sticky top-0 z-20">
       <label
-        class="input bg-base-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+        class="input bg-base-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+        id="sidebar-search-container"
       >
         <Search slot="icon" class="h-4 w-4 text-blue-500" />
-        <input id="sidebar-search" type="search" class="grow" placeholder="Search" />
+        <input 
+          id="sidebar-search" 
+          type="search" 
+          class="grow cursor-pointer" 
+          placeholder="Search" 
+        />
         <kbd class="kbd kbd-sm">⌘</kbd>
         <kbd class="kbd kbd-sm">K</kbd>
       </label>
@@ -53,7 +59,38 @@ const { apis, selectedApiName, events, selectedEventName } = Astro.props;
 <script is:inline>
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('sidebar-search');
-  if (!searchInput) return;
+  const searchContainer = document.getElementById('sidebar-search-container');
+  
+  if (!searchInput || !searchContainer) return;
+
+  // Handle click and focus on search input to open command palette
+  const openCommandPalette = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Blur the input to prevent cursor from appearing
+    searchInput.blur();
+    // Dispatch custom event to open command palette
+    window.dispatchEvent(new CustomEvent('openCommandPalette'));
+  };
+
+  searchInput.addEventListener('click', openCommandPalette);
+  searchInput.addEventListener('focus', openCommandPalette);
+  searchContainer.addEventListener('click', openCommandPalette);
+
+  // Prevent typing in the search input since we use the command palette
+  searchInput.addEventListener('keydown', (e) => {
+    // Allow Cmd+K and Ctrl+K to pass through
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      return;
+    }
+    // Prevent all other typing
+    e.preventDefault();
+    // Open command palette on any key press
+    openCommandPalette(e);
+  });
+
+  // Keep the data-name filtering for backward compatibility if needed
+  // This is now mainly for fallback purposes
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     document.querySelectorAll('[data-name]').forEach((el) => {

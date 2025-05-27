@@ -130,3 +130,7 @@ The built files will be available in the `dist` directory and can be deployed to
 ## Preview
 
 ![](./images/preview.png)
+
+## Search Index Generation
+
+See [docs/search.md](docs/search.md) for details on how to generate the search index.
