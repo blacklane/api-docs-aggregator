@@ -14,7 +14,7 @@ export const Logo: React.FC<LogoProps> = ({
 	title = "Brand Logo",
 }) => {
 	return (
-		<div className="flex items-center gap-2 text-white">
+		<div className="flex items-center gap-2 text-base-content">
 			<svg
 				width={width}
 				height={height}

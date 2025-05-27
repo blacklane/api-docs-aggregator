@@ -1,0 +1,28 @@
+---
+import EventsView from "../../components/EventsView.astro";
+import { events } from "../../config/events";
+import Layout from "../../layouts/Layout.astro";
+
+// Get the event name from the URL params
+const { event } = Astro.params;
+
+// Find the current event for the title and selected state
+const currentEvent = events.find(
+	(eventItem) => eventItem.name.toLowerCase() === (event?.toLowerCase() || ""),
+);
+
+// Generate static paths for all events
+export function getStaticPaths() {
+	return events.map((event) => ({
+		params: { event: event.name.toLowerCase() },
+	}));
+}
+
+// If the event doesn't exist, redirect to the not-found page
+if (!currentEvent && event) {
+	return Astro.redirect("/not-found");
+}
+---
+<Layout title={currentEvent ? currentEvent.name : "Event Not Found"} selectedEventName={currentEvent?.name || null}>
+	<EventsView eventName={event || ""} />
+</Layout> 

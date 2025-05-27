@@ -3,39 +3,47 @@ import { apis } from "../config/apis";
 import SwaggerUIComponent from "./SwaggerUIComponent";
 
 interface Props {
-    apiName: string;
+  apiName: string;
 }
 
 const { apiName } = Astro.props;
 
 // API base URL from environment variable
-const API_BASE_URL = import.meta.env.PUBLIC_SWAGGER_API_URL || '';
+const API_BASE_URL = import.meta.env.PUBLIC_SWAGGER_API_URL || "";
 
 // Find the API by name (case insensitive)
 const currentApi = apis.find(
-    (api) => api.name.toLowerCase() === (apiName?.toLowerCase() || "")
+  (api) => api.name.toLowerCase() === (apiName?.toLowerCase() || "")
 );
 
 // Define a custom URL for the Swagger UI to use
-const swaggerUrl = currentApi?.url || '';
+const swaggerUrl = currentApi?.url || "";
 ---
-{!currentApi ? (
-    <div class="flex justify-center items-center h-full text-gray-500 dark:text-zinc-400 text-lg bg-gray-50 dark:bg-zinc-900">
-        API not found
+
+{
+  !currentApi ? (
+    <div class="flex justify-center items-center h-full text-base-content/70 text-lg bg-base-100">
+      API not found
     </div>
-) : (
+  ) : (
     <div class="absolute inset-0">
-        <SwaggerUIComponent url={swaggerUrl} apiBaseUrl={API_BASE_URL} client:load />
+      <SwaggerUIComponent
+        url={swaggerUrl}
+        apiBaseUrl={API_BASE_URL}
+        client:load
+      />
     </div>
-)}
+  )
+}
 
 <style>
-    .loading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        font-size: 1.25rem;
-        color: #6b7280;
-    }
-</style> 
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.25rem;
+    color: #6b7280;
+  }
+</style>
+

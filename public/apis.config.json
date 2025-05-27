@@ -1,12 +1,12 @@
 {
-    "apis": [
-        {
-            "name": "Athena",
-            "url": "https://api-docs.int.blacklane.io/athena.json"
-        },
-        {
-            "name": "Emirates",
-            "url": "https://api-docs.int.blacklane.io/emirates.json"
-        }
-    ]
+	"apis": [
+		{
+			"name": "Athena",
+			"url": "https://api-docs.int.blacklane.io/athena.json"
+		},
+		{
+			"name": "Emirates",
+			"url": "https://api-docs.int.blacklane.io/emirates.json"
+		}
+	]
 }
