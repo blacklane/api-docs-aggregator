@@ -33,13 +33,21 @@ asyncApiUrl = `${API_BASE_URL}?url=${encodeURIComponent(asyncApiUrl)}`;
         Event not found
     </div>
 ) : (
-    <div class="relative">
-       <asyncapi-component
-        id="asyncapi-viewer"
-        schemaUrl={asyncApiUrl}
-        config='{"show": {"info": false}}'
-        schemaFetchOptions='{"method":"GET","mode":"cors"}'
-        cssImportPath="https://unpkg.com/@asyncapi/react-component@latest/styles/default.min.css">
+    <div class="relative h-full">
+        <!-- Loading overlay -->
+        <div id="asyncapi-loading" class="absolute inset-0 flex items-center justify-center bg-base-100 z-10">
+            <div class="flex flex-col items-center gap-3">
+                <div class="loading loading-spinner loading-lg text-primary"></div>
+                <span class="text-base-content/70">Loading event documentation...</span>
+            </div>
+        </div>
+        
+        <asyncapi-component
+            id="asyncapi-viewer"
+            schemaUrl={asyncApiUrl}
+            config='{"show": {"info": false}}'
+            schemaFetchOptions='{"method":"GET","mode":"cors"}'
+            cssImportPath="https://unpkg.com/@asyncapi/react-component@latest/styles/default.min.css">
         </asyncapi-component>
     </div>
     <script src="https://unpkg.com/@asyncapi/web-component@latest/lib/asyncapi-web-component.js" defer></script>
@@ -49,11 +57,72 @@ asyncApiUrl = `${API_BASE_URL}?url=${encodeURIComponent(asyncApiUrl)}`;
       **/
       document.addEventListener('DOMContentLoaded', function() {
         initializeAsyncApiTheme();
+        initializeLoadingState();
       });
       
       // Also try to initialize immediately if DOM is already loaded
       if (document.readyState !== 'loading') {
         initializeAsyncApiTheme();
+        initializeLoadingState();
+      }
+
+      function initializeLoadingState() {
+        var asyncapi = document.getElementById('asyncapi-viewer');
+        var loadingElement = document.getElementById('asyncapi-loading');
+        
+        if (asyncapi && loadingElement) {
+          // Use MutationObserver to detect when the AsyncAPI component has rendered content
+          var observer = new MutationObserver(function(mutations) {
+            var hasContent = false;
+            
+            // Check if the component has rendered any meaningful content
+            mutations.forEach(function(mutation) {
+              if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                // Look for actual content being added (not just empty divs)
+                mutation.addedNodes.forEach(function(node) {
+                  if (node.nodeType === Node.ELEMENT_NODE) {
+                    var element = node as Element;
+                    // Check if the element has meaningful content or nested elements
+                    if (element.children.length > 0 || element.textContent?.trim()) {
+                      hasContent = true;
+                    }
+                  }
+                });
+              }
+            });
+            
+            // If content is detected, hide the loading overlay
+            if (hasContent && loadingElement) {
+              loadingElement.style.display = 'none';
+              observer.disconnect();
+            }
+          });
+          
+          // Start observing the AsyncAPI component
+          observer.observe(asyncapi, { 
+            childList: true, 
+            subtree: true,
+            characterData: true 
+          });
+          
+          // Fallback: Hide loading after 10 seconds regardless
+          setTimeout(function() {
+            var currentLoadingElement = document.getElementById('asyncapi-loading');
+            if (currentLoadingElement) {
+              currentLoadingElement.style.display = 'none';
+            }
+            observer.disconnect();
+          }, 10000);
+          
+          // Additional check: Hide loading if component already has content
+          setTimeout(function() {
+            var currentLoadingElement = document.getElementById('asyncapi-loading');
+            if (asyncapi && asyncapi.children.length > 0 && currentLoadingElement) {
+              currentLoadingElement.style.display = 'none';
+              observer.disconnect();
+            }
+          }, 1000);
+        }
       }
 
       function updateAsyncApiTheme(isDark:boolean):any {
