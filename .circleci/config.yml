@@ -31,7 +31,7 @@ jobs:
         name: Build with search index
         environment:
             GITHUB_TOKEN: $GITHUB_TOKEN
-        command: npm run build
+        command: npm run build 
      - run:
          name: Invalidate CloudFront Cache
          command: aws cloudfront create-invalidation --distribution-id E3MNKGZ3ZPDW10 --paths "/*"
