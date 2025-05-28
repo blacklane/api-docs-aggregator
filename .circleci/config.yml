@@ -29,8 +29,6 @@ jobs:
         override-ci-command: npm install
      - run:
         name: Build with search index
-        environment:
-            GITHUB_TOKEN: $GITHUB_TOKEN
         command: npm run build
      - run:
          name: Invalidate CloudFront Cache
@@ -51,8 +49,6 @@ jobs:
          override-ci-command: npm install
      - run:
         name: Build with search index
-        environment:
-            GITHUB_TOKEN: $GITHUB_TOKEN
         command: PUBLIC_SWAGGER_API_URL=$TESTING_PUBLIC_SWAGGER_API_URL npm run build
      - run:
          name: Invalidate CloudFront Cache
