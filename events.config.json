@@ -2,7 +2,7 @@
 	"events": [
 		{
 			"name": "Flight Service",
-			"url": "https://github.com/blacklane/flight-service/blob/main/docs/asyncapi.yaml"
+			"url": "https://github.com/blacklane/flight/blob/main/docs/asyncapi.yaml"
 		},
 		{
 			"name": "Booking Service",
