@@ -11,26 +11,26 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/react": "^4.2.7",
+		"@astrojs/react": "^4.3.0",
 		"@asyncapi/react-component": "^2.6.3",
 		"@asyncapi/web-component": "^2.6.3",
-		"@lucide/astro": "^0.511.0",
-		"astro": "^5.7.13",
+		"@lucide/astro": "^0.513.0",
+		"astro": "^5.8.2",
 		"cmdk": "^1.1.1",
-		"daisyui": "^5.0.35",
-		"lucide-react": "^0.511.0",
-		"react": "^18.0.0",
-		"react-dom": "^18.0.0",
-		"swagger-ui-react": "^5.21.0",
+		"daisyui": "^5.0.43",
+		"lucide-react": "^0.513.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"swagger-ui-react": "^5.22.0",
 		"tailwind-scrollbar": "^4.0.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@tailwindcss/vite": "^4.1.7",
-		"@types/react": "^18.3.20",
-		"@types/react-dom": "^18.3.0",
+		"@tailwindcss/vite": "^4.1.8",
+		"@types/react": "^18.3.23",
+		"@types/react-dom": "^18.3.7",
 		"@types/swagger-ui-react": "^5.18.0",
-		"tailwindcss": "^4.1.7",
+		"tailwindcss": "^4.1.8",
 		"typescript": "^5.8.3"
 	}
 }
